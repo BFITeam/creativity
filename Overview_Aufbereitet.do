@@ -559,7 +559,6 @@ eststo: quietly reg zp_flex2 zp_flex1 gift turnier if treatment_id>20 & treatmen
 *eststo: quietly reg zp_original2_10 zp_original1_10 gift turnier if treatment_id>20 & treatment_id<24, r
 *eststo: quietly reg zp_original2_5 zp_original1_5 gift turnier if treatment_id>20 & treatment_id<24, r
 *eststo: quietly reg zp_original2_1 zp_original1_1 gift turnier if treatment_id>20 & treatment_id<24, r
-esttab using robustness.tex, booktabs label replace
 
 eststo clear
 
