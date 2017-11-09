@@ -1,0 +1,20 @@
+treatment id is
+11 for slider control
+12 for slider gift
+13 for slider tournament
+14 for slider feedback
+21 for creative control
+22 for creative gift
+23 for creative tournament
+24 for creative feedback
+41 for creative transfer control
+42 for creative transfer gift
+ 
+31 for CSC
+32 for SCS
+ 
+52 we have dropped this supplementary treatment from the paper
+ 
+ 
+EKE is SCS (for Einfach/easy … Kreativ/Creative … Einfach/easy) and
+KEK is CSC (Kreativ/Creative … Einfach/easy … Kreativ/Creative)
