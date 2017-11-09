@@ -155,8 +155,6 @@ log using "$mypath\Tables\Logs\Creativity_Dimensions_Means.log", replace
 use "$mypath\Overview_Aufbereitet.dta", clear
 drop if treatment == 4
 
-//merge additional originality cutoffs
-merge 1:1 id using "$mypath\originality_cutoffs.dta", nogen
 //gen 1<%<8 number, the unusual uses but not very unusual (1 to 8% original)
 gen original_uu1 = p_original1 - 2*original_1_1
 gen original_uu2 = p_original2 - 2*original_2_1

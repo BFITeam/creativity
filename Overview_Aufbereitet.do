@@ -3,9 +3,7 @@ set more off
 set memory 100m
 cap log close
 
-global mypath = "C:\Users\gtierney\Documents\GitHub\creativity"
-
-use "$mypath\Overview.dta", clear
+use "$mypath\raw_data\Overview.dta", clear
 log using "$mypath\Overview_Aufbereitet.log", replace
 
 
@@ -670,7 +668,9 @@ replace heidelberg = 0 if heidelberg== .
 replace mannheim = 0 if heidelberg==1
 ********************************************
 
-save "$mypath\Overview_Aufbereitet.dta", replace
+merge 1:1 id using "$mypath\originality_cutoffs.dta", nogen
+
+save "$mypath\raw_data\Overview_Aufbereitet.dta", replace
 
 log close
 set more on
