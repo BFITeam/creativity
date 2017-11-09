@@ -46,4 +46,24 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-*.*
+#stata datsets
+*.dta
+
+# Old version of the paper/materials
+V170720_Shana/*
+Archive/*
+
+# Tex output
+*.pdf
+*.aux
+*.log
+*.out
+*.synctex.gz
+
+Bibs/*
+Figures/*
+Graphs/*
+Originality_Cutoffs/*
+output_pdf/*
+R files/*
+Tables/*
