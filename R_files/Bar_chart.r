@@ -41,7 +41,7 @@ bar_chart_coef$S[which(bar_chart_coef$p<0.01)]<-"***"
 
 
 
-png(paste0(path,"/160308_Neg_Bonus_Dec.png"))
+png(paste0(path,"/Results/160308_Neg_Bonus_Dec.png"))
 bplot_bonus_neg2<-barplot(as.numeric(bar_chart_coef[,1]),col=c("blue","darkred")[rep(1:2,4)],ylim=c(-1,1.1),yaxt="n",density=c(NA,70),space=c(0.3,0.3,0.3,0.3,1.2,0.3,0.3,0.3))
 segments(x0=mean(bplot_bonus_neg2[c(4,5)]),x1=mean(bplot_bonus_neg2[c(4,5)]),y0=-.6,y1=1)
 segments(x0=mean(bplot_bonus_neg2[c(2,3)]),x1=mean(bplot_bonus_neg2[c(2,3)]),y0=-.55,y1=.55,lty=2)

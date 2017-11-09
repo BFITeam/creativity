@@ -2,12 +2,9 @@ rm(list=ls(all=TRUE))
 #
 #setwd("C:/Users/Arne/Dropbox/Work/Projekte/Aktiv/WOEK/")
 #setwd("D:/Dropbox/Work/Projekte/Aktiv/WOEK/")
-path <-"C:/Users/gtierney/Dropbox (Personal)/creativity/R files"
+path <-"C:/Users/gtierney/Dropbox (Personal)/creativity/R_files"
 setwd(path)
-#
-#.libPaths("C:/Users/Arne/Dropbox/Work/Computer/R Packages" )
-#.libPaths("D:/Dropbox/Work/Computer/R Packages" )
-#
+
 require(foreign)
 require(reshape)
 require(plyr)
@@ -16,7 +13,7 @@ require(lmtest)
 require(car)
 #require(nlme)
 require(plm)
-library(np)
+require(np)
 require(quantreg)
 require(lme4)
 require(coin)
@@ -27,7 +24,7 @@ memory.limit(5000)
 ################################################# Load Data ##############################################################################
 ########################################################################################################################################## 
 ### Load current dataset
-neu<-read.table("Data/150520_Overview.txt",sep="\t",header=T)
+neu<-read.table("../raw_data/r_data/150520_Overview.txt",sep="\t",header=T)
 #
 source("170130_Referee_Do_R_Intro.r")
 #
@@ -133,8 +130,8 @@ pooled$gift_slider <- pooled$gift*pooled$slider
 pooled$turnier_slider <- pooled$turnier*pooled$slider
 np <- npplreg(neffort2~gift+gift_slider+turnier+turnier_slider | neffort1,data=subset(pooled,treatment_id%in%c(11,12,13,21,22,23)))
 np
-plot(np)
-png("Results/np_reg.png")
+#plot(np)
+png(paste0(path,"/Results/np_reg.png"))
 plot(np)
 dev.off()
 

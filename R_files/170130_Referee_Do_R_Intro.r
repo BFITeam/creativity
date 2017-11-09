@@ -128,7 +128,7 @@ sl<-subset(sl,treatment_id!=52)
 ########################################################################################################################################## 
 source("151201_Definitions_NEU.r")
 # Steve Idea
-steve<-read.table("Data/steveidea.txt",header=T,sep="\t",stringsAsFactors=F)
+steve<-read.table("../raw_data/r_data/steveidea.txt",header=T,sep="\t",stringsAsFactors=F)
 colnames(steve)<-tolower(colnames(steve))
 steve<-steve[which(steve$id%in%cneu$id),]
 steve<-steve[,c("id","antoniatop30r1","antoniatop30r2")]
@@ -137,12 +137,12 @@ steve<-steve[,c("id","antoniatop30r1","antoniatop30r2")]
 ##########################################################################################################################################
 ################################################# Subjektive Bew #########################################################################
 ########################################################################################################################################## 
-subj<-read.table("Data/Subjektive_Bewertungen.txt",header=T,sep="\t")
+subj<-read.table("../raw_data/r_data/Subjektive_Bewertungen.txt",header=T,sep="\t")
 subj<-subj[,c(6,8:11)]
 #
-round1<-read.table("Data/Round1.txt",header=T,sep="\t",stringsAsFactors=F)
-round2<-read.table("Data/Round2.txt",header=T,sep="\t",stringsAsFactors=F)
-round3<-read.table("Data/Round3.txt",header=T,sep="\t",stringsAsFactors=F)
+round1<-read.table("../raw_data/r_data/Round1.txt",header=T,sep="\t",stringsAsFactors=F)
+round2<-read.table("../raw_data/r_data/Round2.txt",header=T,sep="\t",stringsAsFactors=F)
+round3<-read.table("../raw_data/r_data/Round3.txt",header=T,sep="\t",stringsAsFactors=F)
 #
 round1$valid<-round1$Gueltigkeit.spez
 round1$invalid<-as.numeric(round1$Gueltigkeit.spez==0)
