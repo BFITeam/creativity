@@ -49,9 +49,15 @@ Temporary Items
 #stata datsets
 *.dta
 
+#image files
+*.png
+
 # Old version of the paper/materials
 V170720_Shana/*
 Archive/*
+
+#raw data
+raw_data/*
 
 # Tex output
 *.pdf
@@ -61,9 +67,21 @@ Archive/*
 *.synctex.gz
 
 Bibs/*
-Figures/*
 Graphs/*
 Originality_Cutoffs/*
 output_pdf/*
-R files/*
-Tables/*
+
+Tables/Archive_old_tables/*
+Tables/Output/*
+Tables/Logs/*
+
+Figures/Data/*
+Figures/Logs/*
+Figures/Graphs/*
+Figures/Archive/*
+
+R_files/Results/*
+R_files/Archive/*
+*.Rhistory
+*.Rout
+
