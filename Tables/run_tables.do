@@ -40,10 +40,10 @@ foreach folder in Output Logs {
 	}
 	if _rc == 0 {
 		cd "$mypath/Tables"
- 		if "$os" == "Windows" {
+ 		if "`c(os)'" == "Windows" {
 			!rmdir `folder' /s /q
 		}
-		if "$os" == "MacOSX" {
+		if "`c(os)'" == "MacOSX" {
 			!rm -rf `folder'
 		}
 	}
