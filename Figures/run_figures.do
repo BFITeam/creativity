@@ -8,10 +8,10 @@ capture log close
 
 foreach folder in Logs Data Graphs {
 	capture {
-		cd "$mypath/Tables//`folder'"
+		cd "$mypath/Figures//`folder'"
 	}
 	if _rc == 0 {
-		cd "$mypath/Tables"
+		cd "$mypath/Figures"
  		if "`c(os)'" == "Windows" {
 			!rmdir `folder' /s /q
 		}
@@ -20,7 +20,7 @@ foreach folder in Logs Data Graphs {
 		}
 	}
 
-	cd "$mypath/Tables"
+	cd "$mypath/Figures"
 	mkdir `folder'
 	
 }
