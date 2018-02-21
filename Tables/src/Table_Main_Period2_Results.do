@@ -128,5 +128,137 @@ esttab using "$mypath\Tables\Output\Table_Main_Period2_Results.tex", // esttab p
 di "Difference in treatment & `p_1_cr' & `p_2_cr' & `p_3_cr' \\"
 di "effect for creative task & `p_1_sl' & `p_2_sl' & `p_3_sl' \\"
 
+********************************
+*** Cluster Robustness Check ***
+********************************
+
+local treatments turnier turnXslid gift giftXslid 
+eststo clear	// eststo clear drops all estimation sets stored by eststo
+eststo:  reg ztransfer2 `treatments' if feedback==0 & (slider==1 | creative==1), robust cluster(session)
+eststo:  reg ztransfer2 `treatments' ztransfer1 ztransfer1Xslid if feedback==0 & (slider==1 | creative==1), robust cluster(session)
+eststo:  reg ztransfer2 `treatments' ztransfer1 ztransfer1Xslid $controls if (slider==1 | creative==1), robust cluster(session)
+test gift = giftXslid
+test gift + giftXslid == 0 
+test gift == 0.2
+
+#delimit ;
+esttab using "$mypath\Tables\Output\Appendix\Table_Main_Period2_Results_Cluster_Session.tex", // esttab produces a pretty-looking publication-style regression table from stored estimates without much typing (alternative zu estout)
+	nomtitles	// Options: mtitles (model titles to appear in table header)
+	label	   // label (make use of variable labels)
+	varlabel (_cons "Intercept" ztransfer1 "Baseline" zeffort1 "Baseline" slider "Slider-Task" gift "Gift" turnier "Performance Bonus" zeffort1Xslid "Baseline x Slider-Task" giftXslid "Gift x Slider-Task" turnXslid "Performance Bonus x Slider-Task" ztransfer1Xslid "Baseline x Slider-Task"
+	, elist(_cons "[2mm]" zeffort1 "[2mm]" slider "[2mm]" gift "[2mm]" turnier "[2mm]" feedback "[2mm]" giftXslid "[2mm]" turnXslid "[2mm]" feedXslid "[2mm]" zeffort1Xslid "[2mm]" ztransfer1 "[2mm]" ztransfer1Xslid "[2mm]"))
+	stats(N r2, fmt(%9.0f %9.3f) labels("Observations"  "\$R^2$"))	// stats (specify statistics to be displayed for each model in the table footer), fmt() (
+	b(%9.3f)
+	se(%9.3f)
+    drop ($controls)
+	fragment
+	style(tex) 
+	substitute(\_ _)
+	nonumbers 
+	prehead(
+	"\begin{table}[h]%" 
+	"\setlength\tabcolsep{2pt}"
+	"\caption{Treatment Effects in Period 2 \\ (Clustered by Session)}"
+	
+	"\begin{center}%" 
+	"{\small\renewcommand{\arraystretch}{1}%" 
+	"\begin{tabular}{lccc}" 
+	"\hline\hline\noalign{\smallskip}"
+	" & I & II & III \\")
+	posthead("\hline\noalign{\smallskip}") 
+	prefoot("\noalign{\smallskip}\hline"
+	" Controls & NO & NO & YES \\"
+	"\hline" ) 
+	postfoot(
+	"\hline\hline\noalign{\medskip}"
+	"\end{tabular}"
+	"\begin{minipage}{\textwidth}"
+	"\footnotesize {\it Note:} This table reports the estimated OLS coefficients from Equation \ref{eq:reg}. This table differs from Table \ref{tab:EQ_Pooled_Results} in that it clusters standard errors by session." 
+	"The dependent variable is standardized performance in Period 2. $pooled_performance_description "
+	"The treatment dummies \textit{Gift} and \textit{Performance Bonus} capture the effect of an unconditional wage gift or of a performance bonus (rewarding the top 2 performers out of 4 agents) on standardized performance in the creative task. " 
+	"The interaction effects measure the difference in treatment effects between the creative and the slider task. "
+	"The treatment effects on the slider task are equal to the sum of the main treatment effect (\textit{Gift} or \textit{Performance Bonus}) and its associated interaction effect (\textit{Gift x Slider} and \textit{Performance Bonus x Slider}). \\"
+	"$sample_description "
+	"$controls_list "
+	"$errors_stars "
+	"\end{minipage}}"
+	"\end{center}"
+	"\label{tab:EQ_Pooled_Results_Cluster_Session}"
+	"\end{table}")
+	replace;
+			
+#delimit cr	// #delimit cr: restore the carriage return delimiter inside a file
+
+*************************************
+*** Slider Dummy Robustness Check ***
+*************************************
+
+
+gen transfer1Xslid = transfer1 * slider
+local treatments turnier turnXslid gift giftXslid slider
+eststo clear	// eststo clear drops all estimation sets stored by eststo
+eststo:  reg transfer2 `treatments' if feedback==0 & (slider==1 | creative==1), robust 
+eststo:  reg transfer2 `treatments' transfer1 ztransfer1Xslid if feedback==0 & (slider==1 | creative==1), robust 
+
+capture log close
+log using "slider_dummy.log", text replace
+local treatments turnier turnXslid gift giftXslid slider
+eststo:  reg transfer2 `treatments' transfer1 transfer1Xslid $controls if (slider==1 | creative==1), robust 
+get_pvals
+eststo:  reg ztransfer2 `treatments' ztransfer1 ztransfer1Xslid $controls if (slider==1 | creative==1), robust 
+get_pvals
+log close
+capture log using "$mypath\Tables\Logs\Table_Main_Period2_Results.log", append 
+
+#delimit ;
+esttab using "$mypath\Tables\Output\Referees\Table_Main_Period2_Results_SliderDummy.tex", // esttab produces a pretty-looking publication-style regression table from stored estimates without much typing (alternative zu estout)
+	nomtitles	// Options: mtitles (model titles to appear in table header)
+	label	   // label (make use of variable labels)
+	varlabel (_cons "Intercept" transfer1 "Baseline" zeffort1 "Baseline" slider "Slider-Task" gift "Gift" turnier "Performance Bonus" zeffort1Xslid "Baseline x Slider-Task" giftXslid "Gift x Slider-Task" turnXslid "Performance Bonus x Slider-Task" transfer1Xslid "Baseline x Slider-Task"
+	, elist(_cons "[2mm]" zeffort1 "[2mm]" slider "[2mm]" gift "[2mm]" turnier "[2mm]" feedback "[2mm]" giftXslid "[2mm]" turnXslid "[2mm]" feedXslid "[2mm]" zeffort1Xslid "[2mm]" ztransfer1 "[2mm]" ztransfer1Xslid "[2mm]"))
+	stats(N r2, fmt(%9.0f %9.3f) labels("Observations"  "\$R^2$"))	// stats (specify statistics to be displayed for each model in the table footer), fmt() (
+	b(%9.3f)
+	se(%9.3f)
+    drop ($controls)
+	fragment
+	style(tex) 
+	substitute(\_ _)
+	nonumbers 
+	prehead(
+	"\begin{table}[h]%" 
+	"\setlength\tabcolsep{2pt}"
+	"\caption{Treatment Effects in Period 2 \\ with Slider Indicator}"
+	
+	"\begin{center}%" 
+	"{\small\renewcommand{\arraystretch}{1}%" 
+	"\begin{tabular}{lccc}" 
+	"\hline\hline\noalign{\smallskip}"
+	" & I & II & III \\")
+	posthead("\hline\noalign{\smallskip}") 
+	prefoot("\noalign{\smallskip}\hline"
+	" Controls & NO & NO & YES \\"
+	"\hline" ) 
+	postfoot(
+	"\hline\hline\noalign{\medskip}"
+	"\end{tabular}"
+	"\begin{minipage}{\textwidth}"
+	"\footnotesize {\it Note:} This table reports the estimated OLS coefficients from Equation \ref{eq:reg}. This table differs from Table \ref{tab:EQ_Pooled_Results} in that it adds an indicator varaible for the slider task." 
+	"The dependent variable is standardized performance in Period 2. $pooled_performance_description "
+	"The treatment dummies \textit{Gift} and \textit{Performance Bonus} capture the effect of an unconditional wage gift or of a tournament incentive (rewarding the top 2 performers out of 4 agents) on standardized performance in the creative task. " 
+	"The interaction effects measure the difference in treatment effects between the creative and the slider task. "
+	"The treatment effects on the slider task are equal to the sum of the main treatment effect (\textit{Gift} or \textit{Performance Bonus}) and its associated interaction effect (\textit{Gift x Slider} and \textit{Performance Bonus x Slider}). \\"
+	"$sample_description "
+	"$controls_list "
+	"$errors_stars "
+	"\end{minipage}}"
+	"\end{center}"
+	"\label{tab:EQ_Pooled_Results_SliderDummy}"
+	"\end{table}")
+	replace;
+			
+#delimit cr	// #delimit cr: restore the carriage return delimiter inside a file
+
+
+
 
 log close
