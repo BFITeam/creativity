@@ -82,6 +82,7 @@ Figures/Archive/*
 
 R_files/Results/*
 R_files/Archive/*
+*.Rproj*
 *.Rhistory
 *.Rout
 
