@@ -156,7 +156,7 @@ file write f
 	"\hline\hline\noalign{\medskip}" _n
 	"\end{tabular}" _n
 	"\begin{minipage}{\textwidth}" _n
-	"\footnotesize {\it Note:}  This table reports the estimated OLS coefficient estimates for the \textit{Feedback} Treatment for Periods 2 and 3. "_n
+	"\footnotesize {\it Note:}  This table reports the estimated OLS coefficient estimates for the \textit{Feedback} treatment for Periods 2 and 3. "_n
 	"$pooled_trans_description " _n
 	"Period 3 effects are also presented separately for those that learned that they did or did not belong to the 50\% top performers. " _n
 	"Feedback effects for Period 2 are estimated using the same specification that we used in Column III in Table \ref{tab:EQ_Pooled_Results}. " _n

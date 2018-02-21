@@ -210,7 +210,7 @@ file write f
 	"\end{tabular}}" _n
 	"\begin{minipage}{\textwidth}" _n
 	"\footnotesize {\it Note:} This table reports mean values by treatment and by whether or not the agent transferred the maximum amount to the principal in Period 1. "  _n
-	"In the Creative Task with Discretionary Transfer treatments (Gift and Control) agents’ performance is evaluated using the same creativity scoring procedure that we use in the creative task treatments (please refer to section 3.1. for a description of the scoring procedure). "
+	"In the Creative Task with Discretionary Transfer treatments (Gift and Control) agents' performance is evaluated using the same creativity scoring procedure that we use in the creative task treatments (please refer to section 3.1. for a description of the scoring procedure). "
 	"In the discretionary transfer treatments, agents learn at the end of each period, how many Taler they earned and may transfer up to that amount to their principal. "
 	"Agents who have a creativity score of 0 and who cannot transfer any amount are included in the third column. " _n
 	"Note that this analysis uses the score that participants saw during the experiment (instead of the score that uses updated originality ratings that we use for our main analyses). "
@@ -292,7 +292,7 @@ esttab using "$mypath\Tables\Output\Appendix\Transfer_by_max_transfer.tex", repl
 	"\end{tabular}}"
 	"\begin{minipage}{\textwidth}"
 	"\footnotesize {\it Note:} This table reports OLS estimates of treatment effects in the Creative Task with Discretionary Transfers -- Gift. " 
-	"In the Creative Task with Discretionary Transfer treatments (Gift and Control) agents’ performance is evaluated using the same creativity scoring procedure that we use in the creative task treatments (please refer to section 3.1. for a description of the scoring procedure). "
+	"In the Creative Task with Discretionary Transfer treatments (Gift and Control) agents' performance is evaluated using the same creativity scoring procedure that we use in the creative task treatments (please refer to section 3.1. for a description of the scoring procedure). "
 	"In the discretionary transfer treatments, agents learn at the end of each period, how many Taler they earned and may transfer up to that amount to their principal. "
 	"The dependent variable is the standardized amount transferred to the principal. It is standardized to give the Creative Task with Discretionary Transfers -- Control Group mean zero and variance one. "
 	"Agents with a creativity score of 0 and who cannot transfer any amount are included in the first column. \\"
