@@ -48,15 +48,21 @@ gen giftXcreative = gift == 1 & creative == 1
 gen turnXcreative = turnier == 1 & creative == 1
 
 eststo clear
-eststo: reg zeffort2 turnier gift zeffort1 $controls if slider == 1 & below == 1, robust
-eststo: reg zeffort2 turnier gift zeffort1 $controls if slider == 1 & above == 1, robust
+local treatments turnier turnXslid gift giftXslid  
+
+eststo: reg ztransfer2 `treatments' ztransfer1 ztransfer1Xslid $controls if (slider == 1 | creative == 1) & below == 1, robust
+get_pvals
+
+eststo: reg ztransfer2 `treatments' ztransfer1 ztransfer1Xslid $controls if (slider == 1 | creative == 1) & above == 1, robust
+get_pvals
 
 //output high-level regressions
 #delimit ;
-esttab using "$mypath\Tables\Output\Referees\BaselineRegressions.tex", replace
+esttab using "$mypath\Tables\Output\Appendix\BaselineRegressions.tex", replace
 	nomtitles	
 	label	   
-	varlabel (_cons "Intercept" zeffort1 "Baseline" gift "Gift" turnier "Tournament")
+	varlabel (_cons "Intercept" ztransfer1 "Baseline" zeffort1 "Baseline" slider "Slider-Task" gift "Gift" turnier "Performance Bonus" zeffort1Xslid "Baseline x Slider-Task" giftXslid "Gift x Slider-Task" turnXslid "Performance Bonus x Slider-Task" ztransfer1Xslid "Baseline x Slider-Task"
+	, elist(_cons "[2mm]" zeffort1 "[2mm]" slider "[2mm]" gift "[2mm]" turnier "[2mm]" feedback "[2mm]" giftXslid "[2mm]" turnXslid "[2mm]" feedXslid "[2mm]" zeffort1Xslid "[2mm]" ztransfer1 "[2mm]" ztransfer1Xslid "[2mm]"))
 	starlevels(* .10 ** 0.05 *** .01) 														
 	stats(N r2, fmt(%9.0f %9.3f) labels("Observations"  "\$R^2$"))	// stats (specify statistics to be displayed for each model in the table footer), fmt() (
 	b(%9.3f)
@@ -71,7 +77,7 @@ esttab using "$mypath\Tables\Output\Referees\BaselineRegressions.tex", replace
 	"\captionsetup{justification=centering}"
 	"\setlength\tabcolsep{2pt}"
 	"\begin{center}%"
-	"\caption{Treatment Effects by Above and Below Average Baseline Performance \\ on the Slider Task}"
+	"\caption{Treatment Effects by Above and Below Average Baseline Performance}"
 	"\label{tab:BaselineReg}"
 	"{\small\renewcommand{\arraystretch}{1}%" 
 	"\begin{tabular}{lcc}" 
@@ -90,10 +96,13 @@ esttab using "$mypath\Tables\Output\Referees\BaselineRegressions.tex", replace
 	postfoot("\hline\hline\noalign{\medskip}"
 	"\end{tabular}}"
 	"\begin{minipage}{\textwidth}"
-	"\footnotesize {\it Note:} This table reports OLS estimates of treatment effects in the slider task by baseline performance. " 
-	"Columns I and II report treatment effects on the performance of agents whose performance was below (Column I) and above (Column II) average in period 1 (as compared to the control group). " 
-	"$slider_description "
-	"The dependent variable is standardized performance in Period 2. \\"
+	"\footnotesize {\it Note:} "
+	"This table reports the estimated OLS coefficients from Equation \ref{eq:reg} split by baseline performance. " 
+	"Columns I and II report treatment effects on the performance of agents whose performance was below (Column I) and above (Column II) average in Period 1 (as compared to the Control Group). " 
+	"The dependent variable is standardized performance in Period 2. $pooled_performance_description "
+	"The treatment dummies \textit{Gift} and \textit{Performance Bonus} capture the effect of an unconditional wage gift or of a performance bonus (rewarding the top 2 performers out of 4 agents) on standardized performance in the creative task. " 
+	"The interaction effects measure the difference in treatment effects between the creative and the slider task. "
+	"The treatment effects on the slider task are equal to the sum of the main treatment effect (\textit{Gift} or \textit{Performance Bonus}) and its associated interaction effect (\textit{Gift x Slider} and \textit{Performance Bonus x Slider}). \\"
 	"$sample_description "
 	"$controls_list "
 	"$errors_stars "
