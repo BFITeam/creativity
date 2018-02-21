@@ -13,6 +13,8 @@ drop if treatment == 4
 foreach var in original flex{
 	foreach time in 1 2 3 {
 		gen `var'_rate`time' = p_`var'`time' / p_valid`time'
+		//sum `var'_rate`time' if creative == 1 & treatment_id2 == "creative_control"
+		//replace `var'_rate`time' = (`var'_rate`time' - `r(mean)')/`r(sd)'
 	}
 }
 
@@ -38,7 +40,7 @@ tabstat original_rate2 if creative == 1, by(treatment_id2) stat(mean median n)
 				
 //top answers
 preserve
-insheet using "$mypath\R Files\Data\steveidea.txt", clear tab
+insheet using "$mypath\raw_data\r_data\steveidea.txt", clear tab
 keep id antonia*
 *tostring id, replace
 tempfile topanswers
@@ -59,7 +61,7 @@ eststo: reg p_invalid2 turnier gift p_invalid1 $controls if creative==1, robust
 gen total_top = antoniatop30r2 + antoniatop30r1
 gen total_p12 = p_valid2 + p_valid1
 
-tabstat total_top total_p12 if creative == 1, stat(sum)
+//tabstat total_top total_p12 if creative == 1, stat(sum)
 
 log close
 
@@ -74,12 +76,13 @@ forvalues i = 1/`num_regs'{
 	local controls_row `controls_row' & YES
 }
 
+local close_latex_quote ''
 #delimit; // #delimit: command resets the character that marks the end of a command, here ;
 esttab using "$mypath\Tables\Output\Table_Creativity_Breakdown.tex", 
 	label	   // label (make use of variable labels)
 	nomtitles
 	rename(zeffort1 "Period1" zp_valid1 "Period1" zp_flex1 "Period1" zp_original1 "Period1" flex_rate1 "Period1" original_rate1 "Period1" antoniatop30r1 "Period1" p_invalid1 "Period1")
-	varlabels("Period1" "Baseline" _cons Intercept turnier Tournament)
+	varlabels("Period1" "Baseline" _cons Intercept turnier "Performance Bonus")
 	starlevels(* .10 ** 0.05 *** .01) 														
 	stats(N r2, fmt(%9.0f %9.3f) labels("Observations"  "\$R^2$"))	// stats (specify statistics to be displayed for each model in the table footer), fmt() (
 	b(%9.3f)
@@ -113,13 +116,13 @@ esttab using "$mypath\Tables\Output\Table_Creativity_Breakdown.tex",
 	"\begin{minipage}{\textwidth}"
 	"\footnotesize {\it Note:} This table reports the estimated OLS coefficients from Equation \ref{eq:reg} (using observations from the creative task only). "
 	"$treatment_description "
-	"\textit{Gift} and \textit{Tournament} refer to these two treatments. "
+	"\textit{Gift} and \textit{Performance Bonus} refer to these two treatments. "
 	"The dependent variable in column I is the standardized creativity score in Period 2. "
 	"This refers to the the creativity score (please refer to section $creative_score_section for a description of the scoring procedure). "
 	"In columns II, III, and IV, the dependent variables are the three different standardized subdimensions of the creativity score (validity, fluency, and originality). "
 	"Columns V and VI display treatment effects on the unstandardized flexibility and originality rate. "
 	"The flexibility (orginality) rate equals flexibility (originality) points divided by the number of valid answers (subjects with zero valid answers are dropped from these columns). "
-	"Column VII reports results for a subjective assessment idea quality (unstandardized). To create this variable, an evaluator blind to the treatments was instructed to indicated for each idea whether they considered it to be a ``best'' or ``outstanding'' idea. "
+	"Column VII reports results for a subjective assessment idea quality (unstandardized). To create this variable, an evaluator blind to the treatments was instructed to indicate for each idea whether they considered it to be a ``best`close_latex_quote' or ``outstanding`close_latex_quote' idea. "
 	"Column VIII report results for invalid uses (unstandardized). \\"
 	"$sample_description "
 	"$controls_list "
@@ -315,7 +318,7 @@ esttab using "$mypath\Tables\Output\Referees\Creativity_Valid_Robustness.tex",
 	nomtitles
 	rename(effort1 "Period1" p_valid1 "Period1" p_flex1 "Period1" p_original1 "Period1" flex_rate1 "Period1" original_1_10 "Period1" original_1_5 "Period1" original_1_1 "Period1" invalid1 "Period1" ///
 			original_o5_v1_1 "Period1" original_o10_v1_1 "Period1" original_o10_v5_1 "Period1" original_o5_v1_1_rate "Period1" original_o10_v1_1_rate "Period1" original_o10_v5_1_rate "Period1")
-	varlabels("Period1" "Baseline" _cons Intercept tournament Tournament)
+	varlabels("Period1" "Baseline" _cons Intercept tournament "Performance Bonus")
 	starlevels(* .10 ** 0.05 *** .01) 														
 	stats(N r2, fmt(%9.0f %9.3f) labels("Observations"  "\$R^2$"))	// stats (specify statistics to be displayed for each model in the table footer), fmt() (
 	b(%9.3f)
