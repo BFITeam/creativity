@@ -16,15 +16,16 @@ global slider_description In the slider task, agents are evaluated by the number
 global creative_description In the creative task, agends are evaluated by the creativity score (please refer to section $creative_score_section for a description of the scoring procedure). 
 global ctdt_description In the Creative Task with Discretionary Transfer activity, participants complete the creative task. At the end of each period, they see how many Taler they earned and may transfer up to that amount to their principal. 
 
-global treatment_coef_description The treatment dummies \textit{Gift} and \textit{Tournament} capture the effect of an unconditional monetary gift for all or of a tournament incentive (rewarding the top two performers out of their four agents) on standardized performance. 
-global treatment_description In the Gift and Tournament treatment groups, the principals could choose to implement an unconditional monetary gift for all or of a tournament incentive (rewarding the top two performers out of their four agents) between Periods 1 and 2. 
-global Gift_description In the Gift treatment group, the principals could choose to implement an unconditional monetary gift for all between Periods 1 and 2.
-global Tournament_description In the Tournament treatment group, the principals could choose to implement a tournament incentive (rewarding the top two performers out of their four agents) between Periods 1 and 2.
+global treatment_coef_description The treatment dummies \textit{Gift} and \textit{Performance Bonus} capture the effect of an unconditional wage gift for all or of a performance bonus (rewarding the top two performers out of their four agents) on standardized performance. 
+global treatment_description In the Gift and Performance Bonus treatment groups, the principals could choose to implement an unconditional wage gift for all or of a performance bonus (rewarding the top two performers out of their four agents) between Periods 1 and 2. 
+global Gift_description In the Gift treatment group, the principals could choose to implement an unconditional wage gift for all between Periods 1 and 2.
+global Tournament_description In the Performance Bonus treatment group, the principals could choose to implement a performance bonus incentive (rewarding the top two performers out of their four agents) between Periods 1 and 2.
 
-global sample_description The estimation includes all agents from the Control Group as well as agents from treatment groups where the principal decided to institute the tournament/gift. Agents with negative reward decisions are not part of this analysis. 
-global sample_description_nonreg The sample includes all agents from the Control Group as well as agents from treatment groups where the principal decided to institute the tournament/gift. Agents with negative reward decisions are not part of this analysis. 
-global Gift_sample_description The estimation includes all agents from the Control Group as well as agents from Gift treatment groups where the principal decided to institute the gift. Agents with negative reward decisions are not part of this analysis. 
-global Tournament_sample_description The estimation includes all agents from the Control Group as well as agents from Tournament treatment groups where the principal decided to institute the tournament. Agents with negative reward decisions are not part of this analysis. 
+global reward_sample Agents whose principal did not implement a reward scheme are not part of this analysis. 
+global sample_description The estimation includes all agents from the Control Group as well as agents from treatment groups where the principal decided to institute the performance bonus/gift. $reward_sample
+global sample_description_nonreg The sample includes all agents from the Control Group as well as agents from treatment groups where the principal decided to institute the performance bonus/gift. $reward_sample
+global Gift_sample_description The estimation includes all agents from the Control Group as well as agents from Gift treatment groups where the principal decided to institute the gift. $reward_sample
+global Tournament_sample_description The estimation includes all agents from the Control Group as well as agents from Performance Bonus treatment groups where the principal decided to institute the performance bonus. $reward_sample
 
 global controls_list Additional control variables are age, age squared, sex, location, field of study as well as a set of time fixed effects (semester period, semester break, exam period). 
 global errors_stars Heteroscedastic-robust standard errors are reported in parentheses. Significance levels are denoted as follows: * p < 0:1, ** p < 0:05, *** p < 0:01.

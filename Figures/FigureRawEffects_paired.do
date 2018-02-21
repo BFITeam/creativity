@@ -129,20 +129,20 @@ use "$mypath\Figures\Data\FigurePeriod2a_paired.dta", clear
 drop if treatment==4
 
 graph twoway (bar coefficient treatment, fcolor(emidblue) barwidth(0.8))(rcap high low treatment, lwidth(thick)), 	///
-	xlabel( 1 "Control" 2 "Gift" 3 "Tournament", noticks) 	///
+	xlabel( 1 "Control" 2 "Gift" 3 "Performance Bonus", noticks) 	///
 	ytitle("Difference between Round 2 and 1") xtitle(" ") ylabel(-4 (2) 14) subtitle("Slider Task") legend(order(2 "90% Confidence Interval"))  ///
-	saving("$mypath\Figures\Graphs\Figure2a_paired.gph", replace) 
-	graph export "$mypath\Figures\Graphs\Figure2a_paired.ps", logo(off) replace
+	saving("$mypath\Figures\Graphs\Figure4a_paired_final2.gph", replace) 
+	graph export "$mypath\Figures\Graphs\Figure4a_paired_final2.pdf", logo(off) replace
 
 use "$mypath\Figures\Data\FigurePeriod2b_paired.dta", clear
 
 drop if treatment==4
 
 graph twoway (bar coefficient treatment, fcolor(emidblue) barwidth(0.8))(rcap high low treatment, lwidth(thick)), 	///
-	xlabel( 1 "Control" 2 "Gift" 3 "Tournament", noticks) 	///
+	xlabel( 1 "Control" 2 "Gift" 3 "Performance Bonus", noticks) 	///
 	ytitle("Difference between Round 2 and 1") xtitle(" ") ylabel(-4 (2) 14) subtitle("Creative Task") legend(order(2 "90% Confidence Interval"))  ///
-	saving("$mypath\Figures\Graphs\Figure2b_paired.gph", replace) 
-	graph export "$mypath\Figures\Graphs\Figure2b_paired.ps", logo(off) replace
+	saving("$mypath\Figures\Graphs\Figure4b_paired_final2.gph", replace) 
+	graph export "$mypath\Figures\Graphs\Figure4b_paired_final2.pdf", logo(off) replace
 
 /*
 //Period 3

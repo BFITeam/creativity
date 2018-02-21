@@ -43,6 +43,7 @@ format pausen* %9.2f
 list
 
 //tex output
+replace Treatment = "Performance Bonus" if Treatment == "Tournament"
 #delimit;
 listtex using "$mypath\Tables\Output\Appendix\Num_Breaks.tex", replace end("\\")
 	head("\begin{table}[h]%" 
@@ -165,7 +166,7 @@ set obs 3
 
 
 gen Treatment = ""
-replace Treatment = "Tournament" in 1
+replace Treatment = "Performance Bonus" in 1
 replace Treatment = "Gift" in 2
 replace Treatment = "Control" in 3
 
@@ -252,10 +253,10 @@ local format %9.2f
 foreach time in 1 2 dif  {
 	foreach treat in t g c tratio gratio{
 		//local first_letter = substr("`treat'",1,1)
-		if("`treat'" == "t") local treat_str Tournament
+		if("`treat'" == "t") local treat_str Performance Bonus
 		if("`treat'" == "g") local treat_str Gift
 		if("`treat'" == "c") local treat_str Control
-		if("`treat'" == "tratio") local treat_str Tournament
+		if("`treat'" == "tratio") local treat_str Performance Bonus
 		if("`treat'" == "gratio") local treat_str Gift
 		
 		local p`time'_`treat'_row "`treat_str' &" `format' (`slider_`treat'_`time'_effort') " &" `format' ( `slider_`treat'_`time'_time') " &" `format' ( `slider_`treat'_`time'_opt') "&&" `format' ( `creative_`treat'_`time'_effort') "&" `format' ( `creative_`treat'_`time'_time') "&" `format' ( `creative_`treat'_`time'_opt') " \\ "

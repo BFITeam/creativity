@@ -53,7 +53,7 @@ esttab using "$mypath\Tables\Output\Table_DiscretionaryTransfer_Effects.tex",
 	"In these treatments (Control and Gift), agents learned about how many points they had generated for the principal in the previous round and could then decide how many of these points to transfer to the principal. "
 	"This contrasts the main experiment where the output of the agents was automatically transferred to the principal as profit. "
 	"This table reports the estimated OLS coefficients from a regression of standardized amount transfered in Period 2 on an indicator for \textit{Gift} treatment and standardized amount transfered in Period 1. " 
-	"The treatment dummy \textit{Gift} captures the effect of an unconditional monetary gift on standardized amount transfered back to the principal. \\"
+	"The treatment dummy \textit{Gift} captures the effect of an unconditional wage gift on standardized amount transfered back to the principal. \\"
 	"The estimation includes all agents from the Discretionary Transfer Control Group as well as agents from treatment groups where the principal decided to institute the gift. Agents with negative reward decisions are not part of this analysis. "
 	"$controls_list "
 	"$errors_stars "

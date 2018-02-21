@@ -48,7 +48,7 @@ segments(x0=mean(bplot_bonus_neg2[c(2,3)]),x1=mean(bplot_bonus_neg2[c(2,3)]),y0=
 segments(x0=mean(bplot_bonus_neg2[c(6,7)]),x1=mean(bplot_bonus_neg2[c(6,7)]),y0=-.55,y1=.55,lty=2)
 text(bplot_bonus_neg2,as.numeric(bar_chart_coef[,1]),paste(" ",format(round(as.numeric(bar_chart_coef[,1]),2), nsmall = 2),bar_chart_coef$S,sep=""),pos=c(3,1,3,3,3,1,3,1),cex=1.15)
 text(c(mean(bplot_bonus_neg2[c(1:4),]),mean(bplot_bonus_neg2[c(5:8),])),c(1,1),c("Slider task","Creative task"),cex=1.3,font=2)
-text(c(mean(bplot_bonus_neg2[c(1:2),]),mean(bplot_bonus_neg2[c(3:4),])+0.1,mean(bplot_bonus_neg2[c(5:6),]),mean(bplot_bonus_neg2[c(7:8),]))+0.1,c(.45,-.45,.45,-.45),c("Gift","Tournament","Gift","Tournament"),font=3)
+text(c(mean(bplot_bonus_neg2[c(1:2),]),mean(bplot_bonus_neg2[c(3:4),])+0.1,mean(bplot_bonus_neg2[c(5:6),]),mean(bplot_bonus_neg2[c(7:8),]))+0.1,c(.45,-.45,.45,-.45),c("Gift","Performance \n Bonus","Gift","Performance \n Bonus"),font=3)
 legend("bottomright",c("Reward implemented","Reward not implemented"),fill=c("blue","darkred"),density=c(NA,70),cex=1.3)
 #mtext("Stat. significance compared to control group: * p < 0.1, ** p < 0.05, *** p < 0.01",outer=T,SOUTH<-1,line=-4)
 dev.off()

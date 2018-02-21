@@ -28,7 +28,7 @@ eststo: reg ztransfer3 gift winner loser creative_trans gift_transfer ztransfer1
 esttab using "$mypath\Tables\Output\Appendix\Period3_Results_Automated.tex", // esttab produces a pretty-looking publication-style regression table from stored estimates without much typing (alternative zu estout)
 	nomtitles	// Options: mtitles (model titles to appear in table header)
 	label	   // label (make use of variable labels)
-	varlabel (_cons "Intercept" ztransfer1 "Baseline" zeffort1 "Baseline" gift "Gift" turnier "Tournament" winner "Tournament Winner" loser "Tournament Loser" creative_trans "Discretionary Transfer" gift_transfer "Discretionary Transfer x Gift"
+	varlabel (_cons "Intercept" ztransfer1 "Baseline" zeffort1 "Baseline" gift "Gift" turnier "Performance Bonus" winner "Performance Bonus Winner" loser "Performance Bonus Loser" creative_trans "Discretionary Transfer" gift_transfer "Discretionary Transfer x Gift"
 	, elist(_cons "[2mm]" zeffort1 "[2mm]" gift "[2mm]" turnier "[2mm]" feedback "[2mm]" giftXslid "[2mm]" turnXslid "[2mm]" feedXslid "[2mm]" zeffort1Xslid "[2mm]" ztransfer1 "[2mm]" ztransfer1Xslid "[2mm]"))
 	starlevels(* .10 ** 0.05 *** .01) 														
 	stats(N r2, fmt(%9.0f %9.3f) labels("Observations"  "\$R^2$"))	// stats (specify statistics to be displayed for each model in the table footer), fmt() (
@@ -64,10 +64,10 @@ esttab using "$mypath\Tables\Output\Appendix\Period3_Results_Automated.tex", // 
 	"\footnotesize {\it Note:} This table reports the estimated OLS coefficients in Period 3. " 
 	"The analysis follows the set-up laid out in Equation 1, with the exception that we estimate the equation separately for both tasks here. "
 	"$pooled_trans_description "
-	"The treatment dummies \textit{Gift} and \textit{Tournament} capture the effect of an unconditional monetary gift or of a tournament incentive (rewarding the top 2 performers out of 4 agents) on standardized performance. " 
-	"The \textit{Discretionary Transfer} coefficent captures any difference between the Creative Task with Discretionary Transfer -- Control group and the Control group in the creative task. "
-	"The \textit{Discretionary Transfer x Gift} coefficient captures the effect of an unconditional monetary gift on the standardized amount transfered to the principal. "
-	"That is, the estimated effect of allowing discretionary transfers and offering a monetary gift in the creative task is equal to sum of the \textit{Discretionary Transfer x Gift} coefficient and the \textit{Discretionary Transfer} coefficient. \\"
+	"The treatment dummies \textit{Gift} and \textit{Performance Bonus} capture the effect of an unconditional wage gift or of a performance bonus (rewarding the top 2 performers out of 4 agents) on standardized performance. " 
+	"The \textit{Discretionary Transfer} coefficient captures any difference between the Creative Task with Discretionary Transfer -- Control group and the Control group in the creative task. "
+	"The \textit{Discretionary Transfer x Gift} coefficient captures the effect of an unconditional wage gift on the standardized amount transfered to the principal. "
+	"That is, the estimated effect of allowing discretionary transfers and offering a wage gift in the creative task is equal to sum of the \textit{Discretionary Transfer x Gift} coefficient and the \textit{Discretionary Transfer} coefficient. \\"
 	"$sample_description "
 	"$controls_list "
 	"$errors_stars "

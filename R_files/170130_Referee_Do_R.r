@@ -113,13 +113,13 @@ graph_matching_gift$prop_gift<-prop_slider_gift
 graph_matching_turnier<-data.frame("turnier"=subset(sl,treatment_id%in%c(11,13))[,c("turnier")])
 graph_matching_turnier$prop_turnier<-prop_slider_turnier
 #
-png("Results/Prop_Tournament.png")
-plot(NA,xlim=c(0,1),ylim=c(0,3.5),xlab="Propensity Score",ylab="Distribution",main="Propensity Score for Tournament Treatment (Slider-Task)")
+png("Results/Propensity_Score.png")
+plot(NA,xlim=c(0,1),ylim=c(0,3.5),xlab="Propensity Score",ylab="Distribution",main="Propensity Score for Performance \n Bonus Treatment (Slider-Task)")
 abline(v=seq(0,1,.1),lwd=0.1,lty=4,col="lightgray")
 abline(h=seq(0,3.5,.25),lwd=0.1,lty=4,col="lightgray")
 lines(density(subset(graph_matching_turnier,turnier==0)$prop_turnier,bw=.05),lwd=3,col="darkgray")
 lines(density(subset(graph_matching_turnier,turnier==1)$prop_turnier,bw=.05),lwd=3,col="darkblue")
-legend("bottom",c("Tournament Treatment","Control Group"),lwd=3,col=c("darkblue","darkgray"))
+legend("right",c("Performance \nBonus \nTreatment","Control Group"),lwd=3,col=c("darkblue","darkgray"))
 dev.off()
 #tendency.to.forgive
 #
