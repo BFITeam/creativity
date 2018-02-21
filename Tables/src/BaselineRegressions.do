@@ -8,8 +8,44 @@ drop if treatment == 4
 
 log using "$mypath\Tables\Logs\BaselineRegressions.log", replace
 
-gen below = zeffort1 < 0
-gen above = zeffort1 >= 0
+cap program drop get_pvals
+program define get_pvals, rclass
+	
+	test turnier == gift
+	local p_cr = round(`r(p)',.00001)
+	if(`p_cr' == 0) local p_cr 0.000
+	
+	test turnier + turnXslid == gift + giftXslid
+	local p_sl = round(`r(p)',.00001)
+	if(`p_sl' == 0) local p_sl 0.000
+	
+	test gift + giftXslid == 0 
+	local p_sl_g_0 = round(`r(p)',.00001)
+	if(`p_sl_g_0' == 0) local p_sl_g_0 0.000
+	
+	test turnier + turnXslid == 0 
+	local p_sl_t_0 = round(`r(p)',.00001)
+	if(`p_sl_t_0' == 0) local p_sl_t_0 0.000
+	
+	local gift_slider_point_est = _b[gift] + _b[giftXslid]
+	test gift == `gift_slider_point_est'
+	local p_cr_2 = round(`r(p)',.00001)
+	if(`p_cr_2' == 0) local p_cr_2 0.000
+	
+	display "Test for tournament and gift having the same effect in creative task: `p_cr'"
+	display "Test for tournament and gift having the same effect in slider task: `p_sl'"
+	display "Test for gift having zero effect in slider task: `p_sl_g_0'"
+	display "Test for tournament having zero effect in slider task: `p_sl_t_0'"
+	display "Test for gift having effect size of 0.2 in creative task: `p_cr_2'"
+	
+	return local p_cr `p_cr'
+	return local p_sl `p_sl'
+end
+
+gen below = ztransfer1 < 0
+gen above = ztransfer1 >= 0
+gen giftXcreative = gift == 1 & creative == 1
+gen turnXcreative = turnier == 1 & creative == 1
 
 eststo clear
 eststo: reg zeffort2 turnier gift zeffort1 $controls if slider == 1 & below == 1, robust
