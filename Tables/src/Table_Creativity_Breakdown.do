@@ -27,6 +27,14 @@ eststo: reg zp_original2 turnier gift zp_original1 	$controls if creative==1, ro
 //rate regressions
 eststo: reg flex_rate2 turnier gift flex_rate1 			$controls if creative==1, robust
 eststo: reg original_rate2 turnier gift original_rate1 	$controls if creative==1, robust
+
+
+tabstat zp_valid2 if creative == 1, by(treatment_id2) stat(mean median n)
+tabstat zp_flex2 if creative == 1, by(treatment_id2) stat(mean median n)
+tabstat zp_original2 if creative == 1, by(treatment_id2) stat(mean median n)
+tabstat flex_rate2 if creative == 1, by(treatment_id2) stat(mean median n)
+tabstat original_rate2 if creative == 1, by(treatment_id2) stat(mean median n)
+
 				
 //top answers
 preserve
