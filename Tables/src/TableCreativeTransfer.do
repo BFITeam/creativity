@@ -41,7 +41,8 @@ esttab using "$mypath\Tables\Output\Table_DiscretionaryTransfer_Effects.tex",
 	"{\small\renewcommand{\arraystretch}{1.2}%" 
 	"\begin{tabular}{lcc}" 
 	"\hline\hline\noalign{\smallskip}"
-	" & \multicolumn{2}{c}{\bf Amount Transfered} \\")
+	" & \multicolumn{2}{c}{\bf Amount Transferred} \\"
+	" & I & II \\")
 	posthead("\hline\noalign{\smallskip}") 
 	prefoot("\hline"
 	" Controls & NO & YES \\"
@@ -50,11 +51,11 @@ esttab using "$mypath\Tables\Output\Table_DiscretionaryTransfer_Effects.tex",
 	"\end{tabular}"
 	"\begin{minipage}{\textwidth}"
 	"\footnotesize {\it Note:} This table reports the results from the supplementary Creative Task with Discretionary Transfer treatments. "
-	"In these treatments (Control and Gift), agents learned about how many points they had generated for the principal in the previous round and could then decide how many of these points to transfer to the principal. "
-	"This contrasts the main experiment where the output of the agents was automatically transferred to the principal as profit. "
-	"This table reports the estimated OLS coefficients from a regression of standardized amount transfered in Period 2 on an indicator for \textit{Gift} treatment and standardized amount transfered in Period 1. " 
-	"The treatment dummy \textit{Gift} captures the effect of an unconditional wage gift on standardized amount transfered back to the principal. \\"
-	"The estimation includes all agents from the Discretionary Transfer Control Group as well as agents from treatment groups where the principal decided to institute the gift. Agents with negative reward decisions are not part of this analysis. "
+	"In these treatments (Control and Gift), agents learned how many points (how much output) they had generated for the principal in the previous round and could then decide how many of these points to transfer to the principal. "
+	"This procedure contrasts with the main experiment in that in the main experiment the output of the agents was automatically transferred to the principal as profit. "
+	"This table reports the estimated OLS coefficients from a regression of standardized amount transferred in Period 2 on an indicator for \textit{Gift} treatment and standardized amount transferred in Period 1. " 
+	"The treatment dummy \textit{Gift} captures the effect of an unconditional wage gift on the standardized amount transferred back to the principal. \\"
+	"The estimation includes all agents from the Discretionary Transfer -- Control group as well as agents from the Discretionary Transfer -- Gift group where the principal decided to implement the gift. Agents whose principals chose not to implement the gift are not included in this analysis. "
 	"$controls_list "
 	"$errors_stars "
 	"\end{minipage}}"

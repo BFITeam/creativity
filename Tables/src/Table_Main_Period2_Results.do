@@ -110,7 +110,7 @@ esttab using "$mypath\Tables\Output\Table_Main_Period2_Results.tex", // esttab p
 	"\begin{minipage}{\textwidth}"
 	"\footnotesize {\it Note:} This table reports the estimated OLS coefficients from Equation \ref{eq:reg}. " 
 	"The dependent variable is standardized performance in Period 2. $pooled_performance_description "
-	"The treatment dummies \textit{Gift} and \textit{Performance Bonus} capture the effect of an unconditional wage gift or of a performance bonus (rewarding the top 2 performers out of 4 agents) on standardized performance in the creative task. " 
+	"$treatment_coef_description " 
 	"The interaction effects measure the difference in treatment effects between the creative and the slider task. "
 	"The treatment effects on the slider task are equal to the sum of the main treatment effect (\textit{Gift} or \textit{Performance Bonus}) and its associated interaction effect (\textit{Gift x Slider} and \textit{Performance Bonus x Slider}). \\"
 	"$sample_description "
@@ -125,7 +125,7 @@ esttab using "$mypath\Tables\Output\Table_Main_Period2_Results.tex", // esttab p
 #delimit cr	// #delimit cr: restore the carriage return delimiter inside a file
 
 //sniptit to add p values for test for differenc between treatments within tasks
-di "Difference in treatment & `p_1_cr' & `p_2_cr' & `p_3_cr' \\"
+di "Difference in treatment  & `p_1_cr' & `p_2_cr' & `p_3_cr' \\"
 di "effect for creative task & `p_1_sl' & `p_2_sl' & `p_3_sl' \\"
 
 ********************************
@@ -175,7 +175,7 @@ esttab using "$mypath\Tables\Output\Appendix\Table_Main_Period2_Results_Cluster_
 	"\begin{minipage}{\textwidth}"
 	"\footnotesize {\it Note:} This table reports the estimated OLS coefficients from Equation \ref{eq:reg}. This table differs from Table \ref{tab:EQ_Pooled_Results} in that it clusters standard errors by session." 
 	"The dependent variable is standardized performance in Period 2. $pooled_performance_description "
-	"The treatment dummies \textit{Gift} and \textit{Performance Bonus} capture the effect of an unconditional wage gift or of a performance bonus (rewarding the top 2 performers out of 4 agents) on standardized performance in the creative task. " 
+	"$treatment_coef_description " 
 	"The interaction effects measure the difference in treatment effects between the creative and the slider task. "
 	"The treatment effects on the slider task are equal to the sum of the main treatment effect (\textit{Gift} or \textit{Performance Bonus}) and its associated interaction effect (\textit{Gift x Slider} and \textit{Performance Bonus x Slider}). \\"
 	"$sample_description "
@@ -244,7 +244,7 @@ esttab using "$mypath\Tables\Output\Referees\Table_Main_Period2_Results_SliderDu
 	"\begin{minipage}{\textwidth}"
 	"\footnotesize {\it Note:} This table reports the estimated OLS coefficients from Equation \ref{eq:reg}. This table differs from Table \ref{tab:EQ_Pooled_Results} in that it adds an indicator varaible for the slider task." 
 	"The dependent variable is standardized performance in Period 2. $pooled_performance_description "
-	"The treatment dummies \textit{Gift} and \textit{Performance Bonus} capture the effect of an unconditional wage gift or of a tournament incentive (rewarding the top 2 performers out of 4 agents) on standardized performance in the creative task. " 
+	"$treatment_coef_description " 
 	"The interaction effects measure the difference in treatment effects between the creative and the slider task. "
 	"The treatment effects on the slider task are equal to the sum of the main treatment effect (\textit{Gift} or \textit{Performance Bonus}) and its associated interaction effect (\textit{Gift x Slider} and \textit{Performance Bonus x Slider}). \\"
 	"$sample_description "

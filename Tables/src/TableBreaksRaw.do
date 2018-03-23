@@ -239,7 +239,7 @@ foreach task in slider creative{
 
 //variable name headers
 local combined_headers1 \bf Treatment & \bf Output & \bf Time Worked & \bf Output per Second && \bf Output & \bf Time Worked & \bf Output per Second \\
-local combined_headers2 		& & \bf (out of 180s) & \bf of Worktime & & & \bf (out of 180s) & \bf of Worktime \\
+local combined_headers2 		& & \bf (out of 180s) & \bf of Time Worked & & & \bf (out of 180s) & \bf of Time Worked \\
 local p2_headers \bf Treatment & \bf Output Period 2 & \bf Time Worked Period 2 & \bf Output per Time Worked && \bf Output Period 2 & \bf Time Worked Period 2 & \bf Output per Time Worked \\
 local p1_headers \bf Treatment & \bf Output Period 1 & \bf Time Worked Period 1 & \bf Output per Time Worked && \bf Output Period 1 & \bf Time Worked Period 1 & \bf Output per Time Worked \\
 local dd_headers1 \bf Treatment & \bf Difference in & \bf Difference in & \bf Difference in 		 && \bf Difference in & \bf Difference in & \bf Difference in 		 \\
@@ -355,10 +355,10 @@ file write f
 	"\hline\hline\noalign{\medskip}" _n
 	"\end{tabular}}" _n
 	"\begin{minipage}{1.2\textwidth}" _n
-	"\footnotesize {\it Note:} This table reports raw, unstandardized, average output, time spent working, and output per time worked. " _n 
-	"$pooled_performance_description " _n
+	"\footnotesize {\it Note:} This table reports raw, unstandardized, average output, time spent working, and output per second of time worked. " _n 
+	"Output refers to the number of correctly positioned sliders in the slider task and to the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure). " _n
 	"Time worked is the total time (180 seconds) less the number of breaks times the length of breaks (20 seconds). " _n
-	"Output per second of worktime is the ratio of those two quantities. " _n
+	"Output per second of time worked is the ratio of those two quantities. " _n
 	"$breaks_description " _n
 	"Log Difference is the log of the treatment group statistic less the log of the control group statistic. Log differences provide a sense of relative effect sizes. " _n
 	"Numbers may not add up due to rounding. " _n

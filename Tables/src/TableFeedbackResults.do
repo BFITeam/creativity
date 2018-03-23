@@ -156,10 +156,10 @@ file write f
 	"\hline\hline\noalign{\medskip}" _n
 	"\end{tabular}" _n
 	"\begin{minipage}{\textwidth}" _n
-	"\footnotesize {\it Note:}  This table reports the estimated OLS coefficient estimates for the \textit{Feedback} treatment for Periods 2 and 3. "_n
+	"\footnotesize {\it Note:}  This table reports the estimated OLS coefficients for the Feedback treatment in Periods 2 and 3. "_n
 	"$pooled_trans_description " _n
-	"Period 3 effects are also presented separately for those that learned that they did or did not belong to the 50\% top performers. " _n
-	"Feedback effects for Period 2 are estimated using the same specification that we used in Column III in Table \ref{tab:EQ_Pooled_Results}. " _n
+	"Period 3 effects are also presented separately for those agents who learned that they were or were not among the top two performers. " _n
+	"Feedback effects for Period 2 are estimated using the same specification that we used in Table \ref{tab:EQ_Pooled_Results}, Column III. " _n
 	"For the analysis presented here, we added observations from the two Creative Task with Discretionary Transfers treatments. " _n
 	"Post-treatment effects for Period 3 are estimated using the same specifications as presented in Table \ref{tab:Period3} (pooled and split up by positive or negative feedback). " _n
 	"For the Period 3 analysis, regressions are done separately for each task. \\" _n

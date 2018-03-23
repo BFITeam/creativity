@@ -209,13 +209,13 @@ file write f
 	"\hline\hline\noalign{\medskip}" _n
 	"\end{tabular}}" _n
 	"\begin{minipage}{\textwidth}" _n
-	"\footnotesize {\it Note:} This table reports mean values by treatment and by whether or not the agent transferred the maximum amount to the principal in Period 1. "  _n
-	"In the Creative Task with Discretionary Transfer treatments (Gift and Control) agents' performance is evaluated using the same creativity scoring procedure that we use in the creative task treatments (please refer to section 3.1. for a description of the scoring procedure). "
-	"In the discretionary transfer treatments, agents learn at the end of each period, how many Taler they earned and may transfer up to that amount to their principal. "
-	"Agents who have a creativity score of 0 and who cannot transfer any amount are included in the third column. " _n
-	"Note that this analysis uses the score that participants saw during the experiment (instead of the score that uses updated originality ratings that we use for our main analyses). "
-	"Transfer refers to the amount that the agent transfers to the principal. \\" _n
-	"$Gift_sample_description " _n
+	"\footnotesize {\it Note:} This table reports mean values by treatment and by whether or not the agent transferred the maximum amount (all of the output they produced) to the principal in Period 1. "  _n
+	"In the Creative Task with Discretionary Transfer treatments (Control and Gift), agents learned how many points (how much output) they had generated for the principal in the previous round and could then decide how many of these points to transfer to the principal. "
+	"This procedure contrasts with the main experiment in that in the main experiment the output of the agents was automatically transferred to the principal as profit. "
+	"Agents with a creativity score of 0 and who, therefore, cannot transfer any amount are included in the final two columns. " _n
+	"Note that this analysis uses the score that participants saw during the experiment instead of the score used in our main analyses that uses updated originality ratings. "
+	"Transfer refers to the amount of output that the agent transfers to the principal. \\" _n
+	"The estimation includes all agents from the Discretionary Transfer -- Control group as well as agents from the Discretionary Transfer -- Gift group where the principal decided to implement the gift. Agents whose principals chose not to implement the gift are not included in this analysis.  " _n
 	"\end{minipage}" _n
 	"\end{center}" _n
 	"\end{table}" _n;
@@ -291,12 +291,14 @@ esttab using "$mypath\Tables\Output\Appendix\Transfer_by_max_transfer.tex", repl
 	postfoot("\hline\hline\noalign{\medskip}"
 	"\end{tabular}}"
 	"\begin{minipage}{\textwidth}"
-	"\footnotesize {\it Note:} This table reports OLS estimates of treatment effects in the Creative Task with Discretionary Transfers -- Gift. " 
-	"In the Creative Task with Discretionary Transfer treatments (Gift and Control) agents' performance is evaluated using the same creativity scoring procedure that we use in the creative task treatments (please refer to section 3.1. for a description of the scoring procedure). "
-	"In the discretionary transfer treatments, agents learn at the end of each period, how many Taler they earned and may transfer up to that amount to their principal. "
-	"The dependent variable is the standardized amount transferred to the principal. It is standardized to give the Creative Task with Discretionary Transfers -- Control Group mean zero and variance one. "
-	"Agents with a creativity score of 0 and who cannot transfer any amount are included in the first column. \\"
-	"$Gift_sample_description "
+	"\footnotesize {\it Note:} This table reports the results from the supplementary Creative Task with Discretionary Transfer treatments by whether agents transferred the maximum amount (all of the output they produced) in Period 1. "
+	"Treatment effects are estimated using the same specification that we used in Table \ref{tab:Discretionary}, Column I except for the split into two groups by transfers in Period 1. "
+	"In these treatments (Control and Gift), agents learned how many points (how much output) they had generated for the principal in the previous round and could then decide how many of these points to transfer to the principal. "
+	"This procedure contrasts with the main experiment in that in the main experiment the output of the agents was automatically transferred to the principal as profit. "
+	"This table reports the estimated OLS coefficients from a regression of standardized amount transferred in Period 2 on an indicator for \textit{Gift} treatment and standardized amount transferred in Period 1. " 
+	"The treatment dummy \textit{Gift} captures the effect of an unconditional wage gift on the standardized amount transferred back to the principal. "
+	"Agents with a creativity score of 0 and who, therefore, cannot transfer any amount are included in the first column. \\"
+	"The estimation includes all agents from the Discretionary Transfer -- Control group as well as agents from the Discretionary Transfer -- Gift group where the principal decided to implement the gift. Agents whose principals chose not to implement the gift are not included in this analysis. "
 	"$errors_stars "
 	"\end{minipage}"
 	"\end{center}"
