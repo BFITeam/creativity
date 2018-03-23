@@ -37,7 +37,14 @@ tabstat zp_original2 if creative == 1, by(treatment_id2) stat(mean median n)
 tabstat flex_rate2 if creative == 1, by(treatment_id2) stat(mean median n)
 tabstat original_rate2 if creative == 1, by(treatment_id2) stat(mean median n)
 
-				
+//raw correlations
+capture log close
+log using "$mypath\Tables\Logs\valid_rate_correlations.txt", text replace
+reg flex_rate1 p_valid1 $controls if creative == 1 , robust
+reg original_rate1 p_valid1 $controls if creative == 1 & control == 1, robust
+capture log close
+log using "$mypath\Tables\Logs\Table_Creativity_Breakdown.log", append
+
 //top answers
 preserve
 insheet using "$mypath\raw_data\r_data\steveidea.txt", clear tab
