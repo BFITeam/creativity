@@ -30,6 +30,7 @@ global Tournament_sample_description Each estimation includes all agents from th
 global controls_list Additional control variables are age, age squared, sex, location, field of study, and a set of time fixed effects (semester period, semester break, exam period). 
 global errors_stars Heteroscedastic-robust standard errors are reported in parentheses. Significance levels are denoted as follows: * p < 0.1, ** p < 0.05, *** p < 0.01.
 
+global breaks_description To create an opportunity cost of working, we offered agents a time-out button. Each time an agent clicked the time-out button, the computer screen was locked for 20 seconds, and 5 Taler were added to the agent's payoff. Breaks refer to uses of the time-out button. 
 
 //make output directory, remove old copy if it exists and make new ones
 capture log close
