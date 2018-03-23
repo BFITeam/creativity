@@ -127,11 +127,18 @@ dev.off()
 library(np)
 pooled$gift_slider <- pooled$gift*pooled$slider
 pooled$turnier_slider <- pooled$turnier*pooled$slider
-np <- npplreg(neffort2~gift+gift_slider+turnier+turnier_slider | neffort1,data=subset(pooled,treatment_id%in%c(11,12,13,21,22,23)))
+#rename variables for output
+pooled$`Baseline_Performance` <- pooled$neffort1
+pooled$`Period 2 Performance` <- pooled$neffort2
+np <- npplreg(`Period 2 Performance`~gift+gift_slider+turnier+turnier_slider | `Baseline_Performance`,data=subset(pooled,treatment_id%in%c(11,12,13,21,22,23)))
 np
-#plot(np)
+np_plot_data <- plot(np,plot.behavior = "data")
+y <- fitted(np_plot_data$plr5)
+x <- np_plot_data$plr5$evalz[,1]
+
 png(paste0(path,"/Results/np_reg.png"))
-plot(np)
+plot(y ~ x, type = "n",xlab = "Period 1 Performance",ylab = "Period 2 Performance")
+lines(y~x)
 dev.off()
 
 np_sl <- npplreg(neffort2~gift+turnier | neffort1,data=subset(pooled,treatment_id%in%c(11,12,13)))
