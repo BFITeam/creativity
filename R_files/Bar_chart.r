@@ -52,3 +52,16 @@ text(c(mean(bplot_bonus_neg2[c(1:2),]),mean(bplot_bonus_neg2[c(3:4),])+0.1,mean(
 legend("bottomright",c("Reward implemented","Reward not implemented"),fill=c("blue","darkred"),density=c(NA,70),cex=1.3)
 #mtext("Stat. significance compared to control group: * p < 0.1, ** p < 0.05, *** p < 0.01",outer=T,SOUTH<-1,line=-4)
 dev.off()
+
+
+#all_bonus_dec <- rbind(neu_neg,subset(sl,treatment_id != 11))
+all_bonus_dec <- rbind(sneu_neg[,cols],cneu_neg[,cols],
+                 sl[,cols],
+                 cr[,cols])
+
+ols_rewards_effort <- lm(bonus_dec ~ neffort1, data = all_bonus_dec)
+summary(ols_rewards_effort)
+
+logit_rewards_effort <- glm(formula = bonus_dec ~ neffort1, data = all_bonus_dec,family = binomial(link = "logit"))
+summary(logit_rewards_effort)
+
