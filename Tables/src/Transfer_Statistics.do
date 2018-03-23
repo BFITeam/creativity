@@ -202,9 +202,9 @@ file write f
 	"`transfer1_row'" _n
 	"`transfer2_row'" _n
 	"`pct_trans1_row'" _n
-	" Transfered Period 1 & \\" _n
+	" Transferred Period 1 & \\" _n
 	"`pct_trans2_row'" _n
-	" Transfered Period 2 & \\" _n
+	" Transferred Period 2 & \\" _n
 	"`count_row'" _n
 	"\hline\hline\noalign{\medskip}" _n
 	"\end{tabular}}" _n
