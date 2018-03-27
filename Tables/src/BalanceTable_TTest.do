@@ -75,6 +75,8 @@ report_balance "row nofreq" frankfurt frankfurt
 report_balance "row nofreq" mannheim mannheim 
 report_balance "row nofreq" heidelberg heidelberg
 report_balance "summarize(score1) means standard obs" score1
+report_balance "row nofreq" ferienzeit ferienzeit
+report_balance "row nofreq" pruefungszeit pruefungszeit
 
 *** Results coppied from log to latex by hand ***
 
