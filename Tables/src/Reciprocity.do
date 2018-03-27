@@ -19,7 +19,7 @@ eststo: reg ztransfer2 turnier turnier#c.tendencytoforgive turnXslid turnXslid#c
 esttab using "$mypath\Tables\Output\Referees\Reciprocity.tex", // esttab produces a pretty-looking publication-style regression table from stored estimates without much typing (alternative zu estout)
 	nomtitles	// Options: mtitles (model titles to appear in table header)
 	label	   // label (make use of variable labels)
-	varlabel (_cons "Intercept" ztransfer1 "Baseline" zeffort1 "Baseline" gift "Gift" turnier "Performance Bonus" zeffort1Xslid "Baseline x Slider-Task" giftXslid "Gift x Slider-Task" turnXslid "Performance Bonus x Slider-Task" ztransfer1Xslid "Baseline x Slider-Task"
+	varlabel (_cons "Constant" ztransfer1 "Period 1 Output" zeffort1 "Period 1 Output" gift "Gift" turnier "Performance Bonus" zeffort1Xslid "Period 1 Output x Simple Task" giftXslid "Gift x Simple Task" turnXslid "Performance Bonus x Simple Task" ztransfer1Xslid "Period 1 Output x Simple Task"
 	tendencytoforgive "Reciprocity" 1.turnier#c.tendencytoforgive "Performance Bonus x Reciprocity" 1.turnXslid#c.tendencytoforgive "Performance Bonus x Slider x Reciprocity" 1.gift#c.tendencytoforgive "Gift x Reciprocity" 1.giftXslid#c.tendencytoforgive "Gift x Slider x Reciprocity" 1.slider#c.tendencytoforgive "Slider x Reciprocity"
 	, elist(_cons "[2mm]" zeffort1 "[2mm]" gift "[2mm]" turnier "[2mm]" feedback "[2mm]" giftXslid "[2mm]" turnXslid "[2mm]" feedXslid "[2mm]" zeffort1Xslid "[2mm]" ztransfer1 "[2mm]" ztransfer1Xslid "[2mm]"))
 	starlevels(* .10 ** 0.05 *** .01) 														
@@ -52,8 +52,8 @@ esttab using "$mypath\Tables\Output\Referees\Reciprocity.tex", // esttab produce
 	"\footnotesize {\it Note:} This table reports the estimated OLS coefficients from Equation 1 and adds a control for reciprocity (Column I) or controls for reciprocity interacted with the different treatment indicators (Column II). " 
 	"The dependent variable is standardized performance in Period 2. $pooled_performance_description "
 	"The treatment dummies \textit{Gift} and \textit{Performance Bonus} capture the effect of an unconditional wage gift or of a tournament incentive (rewarding the top 2 performers out of 4 agents) on standardized performance. " 
-	"The interaction effects with the \textit{Slider} variable measure the difference in treatment effects between the creative and the slider task. "
-	"That is, the estimated effect of the two treatments on the creative task is the main treatment coefficient (\textit{Gift} or \textit{Performance Bonus}) and the effect on the slider task is the sum of the main treatment coefficient and the respective interaction coefficient (\textit{Performance Bonus x Slider} or \textit{Gift x Slider}). "
+	"The interaction effects with the \textit{Simple} variable measure the difference in treatment effects between the creative and the simple task. "
+	"That is, the estimated effect of the two treatments on the creative task is the main treatment coefficient (\textit{Gift} or \textit{Performance Bonus}) and the effect on the simple task is the sum of the main treatment coefficient and the respective interaction coefficient (\textit{Performance Bonus x Simple} or \textit{Gift x Simple}). "
 	"The interaction effects with the \textit{Reciprocity} variable show how the effects of the treatments (by task) vary with the strength of reciprocal inclinations of the subject. \\" 
 	"$sample_description "
 	"$controls_list "

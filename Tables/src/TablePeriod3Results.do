@@ -28,7 +28,7 @@ eststo: reg ztransfer3 gift winner loser creative_trans gift_transfer ztransfer1
 esttab using "$mypath\Tables\Output\Appendix\Period3_Results_Automated.tex", // esttab produces a pretty-looking publication-style regression table from stored estimates without much typing (alternative zu estout)
 	nomtitles	// Options: mtitles (model titles to appear in table header)
 	label	   // label (make use of variable labels)
-	varlabel (_cons "Intercept" ztransfer1 "Baseline" zeffort1 "Baseline" gift "Gift" turnier "Performance Bonus" winner "Performance Bonus Winner" loser "Performance Bonus Loser" creative_trans "Discretionary Transfer" gift_transfer "Discretionary Transfer x Gift"
+	varlabel (_cons "Constant" ztransfer1 "Period 1 Output" zeffort1 "Period 1 Output" gift "Gift" turnier "Performance Bonus" winner "Performance Bonus Winner" loser "Performance Bonus Loser" creative_trans "Discretionary Transfer" gift_transfer "Discretionary Transfer x Gift"
 	, elist(_cons "[2mm]" zeffort1 "[2mm]" gift "[2mm]" turnier "[2mm]" feedback "[2mm]" giftXslid "[2mm]" turnXslid "[2mm]" feedXslid "[2mm]" zeffort1Xslid "[2mm]" ztransfer1 "[2mm]" ztransfer1Xslid "[2mm]"))
 	starlevels(* .10 ** 0.05 *** .01) 														
 	stats(N r2, fmt(%9.0f %9.3f) labels("Observations"  "\$R^2$"))	// stats (specify statistics to be displayed for each model in the table footer), fmt() (
@@ -53,20 +53,20 @@ esttab using "$mypath\Tables\Output\Appendix\Period3_Results_Automated.tex", // 
 	" & I & II & III & IV \\")
 	posthead("\hline\noalign{\smallskip}") 
 	prefoot("\noalign{\smallskip}\hline"
-	" Controls  & YES & YES & YES & YES \\"
-	" Baseline  & YES & YES & YES & YES \\"
-	" Intercept & YES & YES & YES & YES \\"
+	" Additional Controls  & YES & YES & YES & YES \\"
+	" Period 1 Output  & YES & YES & YES & YES \\"
+	" Constant & YES & YES & YES & YES \\"
 	"\hline" ) 
 	postfoot(
 	"\hline\hline\noalign{\medskip}"
 	"\end{tabular}"
 	"\begin{minipage}{\textwidth}"
 	"\footnotesize {\it Note:} This table reports the estimated OLS coefficients in Period 3. " 
-	"The analysis follows the set-up laid out in Equation 1, with the exception that we estimate the equation separately for both tasks here. "
+	"The analysis follows the set-up laid out in Equation 1, with the exception that we estimate the equation separately for both tasks in this specification. "
 	"$pooled_trans_description "
-	"The treatment dummies \textit{Gift} and \textit{Performance Bonus} capture the effect of an unconditional wage gift or of a performance bonus (rewarding the top two performers out of four agents) on standardized performance. " 
-	"The \textit{Discretionary Transfer} coefficient captures any difference between the Creative Task with Discretionary Transfer -- Control group and the Control group in the creative task. "
-	"The \textit{Discretionary Transfer x Gift} coefficient captures the effect of an unconditional wage gift on the standardized amount transferred to the principal. "
+	"The treatment dummies \textit{Gift} and \textit{Performance Bonus} capture the effect of a performance-independent wage gift for all or of a performance-dependent performance bonus (rewarding the top two performers out of four agents) on standardized output. " 
+	"The \textit{Discretionary Transfer} coefficient captures any difference between the \textit{Creative Task with Discretionary Transfer -- Control} group and the \textit{Control} group in the creative task. "
+	"The \textit{Discretionary Transfer x Gift} coefficient captures the effect of a performance-independent wage gift for all on the standardized amount transferred to the principal. "
 	"That is, the estimated effect of allowing discretionary transfers and offering a wage gift in the creative task equals the sum of the \textit{Discretionary Transfer x Gift} coefficient and the \textit{Discretionary Transfer} coefficient. \\"
 	"$sample_description "
 	"$controls_list "

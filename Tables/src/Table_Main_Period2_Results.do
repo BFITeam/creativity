@@ -79,7 +79,7 @@ local p_format %9.3f
 esttab using "$mypath\Tables\Output\Table_Main_Period2_Results.tex", // esttab produces a pretty-looking publication-style regression table from stored estimates without much typing (alternative zu estout)
 	nomtitles	// Options: mtitles (model titles to appear in table header)
 	label	   // label (make use of variable labels)
-	varlabel (_cons "Intercept" ztransfer1 "Baseline" zeffort1 "Baseline" slider "Slider-Task" gift "Gift" turnier "Performance Bonus" zeffort1Xslid "Baseline x Slider-Task" giftXslid "Gift x Slider-Task" turnXslid "Performance Bonus x Slider-Task" ztransfer1Xslid "Baseline x Slider-Task"
+	varlabel (_cons "Constant" ztransfer1 "Period 1 Output" zeffort1 "Period 1 Output" slider "Simple Task" gift "Gift" turnier "Performance Bonus" zeffort1Xslid "Period 1 Output x Simple Task" giftXslid "Gift x Simple Task" turnXslid "Performance Bonus x Simple Task" ztransfer1Xslid "Period 1 Output x Simple Task"
 	, elist(_cons "[2mm]" zeffort1 "[2mm]" slider "[2mm]" gift "[2mm]" turnier "[2mm]" feedback "[2mm]" giftXslid "[2mm]" turnXslid "[2mm]" feedXslid "[2mm]" zeffort1Xslid "[2mm]" ztransfer1 "[2mm]" ztransfer1Xslid "[2mm]"))
 	starlevels(* .10 ** 0.05 *** .01) 														
 	stats(N r2, fmt(%9.0f %9.3f) labels("Observations"  "\$R^2$"))	// stats (specify statistics to be displayed for each model in the table footer), fmt() (
@@ -93,7 +93,7 @@ esttab using "$mypath\Tables\Output\Table_Main_Period2_Results.tex", // esttab p
 	prehead(
 	"\begin{table}[h]%" 
 	"\setlength\tabcolsep{2pt}"
-	"\caption{Treatment Effects in Period 2}"
+	"\caption{Treatment Effects in Period 2 on both the Creative and the Simple Task}"
 	
 	"\begin{center}%" 
 	"{\small\renewcommand{\arraystretch}{1}%" 
@@ -102,17 +102,16 @@ esttab using "$mypath\Tables\Output\Table_Main_Period2_Results.tex", // esttab p
 	" & I & II & III \\")
 	posthead("\hline\noalign{\smallskip}") 
 	prefoot("\noalign{\smallskip}\hline"
-	" Controls & NO & NO & YES \\"
+	"Additional Controls & NO & NO & YES \\"
 	"\hline" ) 
 	postfoot(
 	"\hline\hline\noalign{\medskip}"
 	"\end{tabular}"
 	"\begin{minipage}{\textwidth}"
 	"\footnotesize {\it Note:} This table reports the estimated OLS coefficients from Equation \ref{eq:reg}. " 
-	"The dependent variable is standardized performance in Period 2. $pooled_performance_description "
+	"The dependent variable is standardized output in Period 2. $pooled_performance_description "
 	"$treatment_coef_description " 
-	"The interaction effects measure the difference in treatment effects between the creative and the slider task. "
-	"The treatment effects on the slider task are equal to the sum of the main treatment effect (\textit{Gift} or \textit{Performance Bonus}) and its associated interaction effect (\textit{Gift x Slider} and \textit{Performance Bonus x Slider}). \\"
+	"$slider_treatment_effects \\"
 	"$sample_description "
 	"$controls_list "
 	"$errors_stars "
@@ -145,7 +144,7 @@ test gift == 0.2
 esttab using "$mypath\Tables\Output\Appendix\Table_Main_Period2_Results_Cluster_Session.tex", // esttab produces a pretty-looking publication-style regression table from stored estimates without much typing (alternative zu estout)
 	nomtitles	// Options: mtitles (model titles to appear in table header)
 	label	   // label (make use of variable labels)
-	varlabel (_cons "Intercept" ztransfer1 "Baseline" zeffort1 "Baseline" slider "Slider-Task" gift "Gift" turnier "Performance Bonus" zeffort1Xslid "Baseline x Slider-Task" giftXslid "Gift x Slider-Task" turnXslid "Performance Bonus x Slider-Task" ztransfer1Xslid "Baseline x Slider-Task"
+	varlabel (_cons "Constant" ztransfer1 "Period 1 Output" zeffort1 "Period 1 Output" slider "Simple Task" gift "Gift" turnier "Performance Bonus" zeffort1Xslid "Period 1 Output x Simple Task" giftXslid "Gift x Simple Task" turnXslid "Performance Bonus x Simple Task" ztransfer1Xslid "Period 1 Output x Simple Task"
 	, elist(_cons "[2mm]" zeffort1 "[2mm]" slider "[2mm]" gift "[2mm]" turnier "[2mm]" feedback "[2mm]" giftXslid "[2mm]" turnXslid "[2mm]" feedXslid "[2mm]" zeffort1Xslid "[2mm]" ztransfer1 "[2mm]" ztransfer1Xslid "[2mm]"))
 	stats(N r2, fmt(%9.0f %9.3f) labels("Observations"  "\$R^2$"))	// stats (specify statistics to be displayed for each model in the table footer), fmt() (
 	b(%9.3f)
@@ -158,7 +157,7 @@ esttab using "$mypath\Tables\Output\Appendix\Table_Main_Period2_Results_Cluster_
 	prehead(
 	"\begin{table}[h]%" 
 	"\setlength\tabcolsep{2pt}"
-	"\caption{Treatment Effects in Period 2 \\ (Clustered by Session)}"
+	"\caption{Treatment Effects in Period 2 on both the Creative and the Simple Task \\ (Clustered by Session)}"
 	
 	"\begin{center}%" 
 	"{\small\renewcommand{\arraystretch}{1}%" 
@@ -167,17 +166,16 @@ esttab using "$mypath\Tables\Output\Appendix\Table_Main_Period2_Results_Cluster_
 	" & I & II & III \\")
 	posthead("\hline\noalign{\smallskip}") 
 	prefoot("\noalign{\smallskip}\hline"
-	" Controls & NO & NO & YES \\"
+	" Additional Controls & NO & NO & YES \\"
 	"\hline" ) 
 	postfoot(
 	"\hline\hline\noalign{\medskip}"
 	"\end{tabular}"
 	"\begin{minipage}{\textwidth}"
 	"\footnotesize {\it Note:} This table reports the estimated OLS coefficients from Equation \ref{eq:reg}. This table differs from Table \ref{tab:EQ_Pooled_Results} in that it clusters standard errors by session." 
-	"The dependent variable is standardized performance in Period 2. $pooled_performance_description "
+	"The dependent variable is standardized output in Period 2. $pooled_performance_description "
 	"$treatment_coef_description " 
-	"The interaction effects measure the difference in treatment effects between the creative and the slider task. "
-	"The treatment effects on the slider task are equal to the sum of the main treatment effect (\textit{Gift} or \textit{Performance Bonus}) and its associated interaction effect (\textit{Gift x Slider} and \textit{Performance Bonus x Slider}). \\"
+	"$slider_treatment_effects \\"
 	"$sample_description "
 	"$controls_list "
 	"$errors_stars "
@@ -214,7 +212,7 @@ capture log using "$mypath\Tables\Logs\Table_Main_Period2_Results.log", append
 esttab using "$mypath\Tables\Output\Referees\Table_Main_Period2_Results_SliderDummy.tex", // esttab produces a pretty-looking publication-style regression table from stored estimates without much typing (alternative zu estout)
 	nomtitles	// Options: mtitles (model titles to appear in table header)
 	label	   // label (make use of variable labels)
-	varlabel (_cons "Intercept" transfer1 "Baseline" zeffort1 "Baseline" slider "Slider-Task" gift "Gift" turnier "Performance Bonus" zeffort1Xslid "Baseline x Slider-Task" giftXslid "Gift x Slider-Task" turnXslid "Performance Bonus x Slider-Task" transfer1Xslid "Baseline x Slider-Task"
+	varlabel (_cons "Constant" transfer1 "Period 1 Output" zeffort1 "Period 1 Output" slider "Simple Task" gift "Gift" turnier "Performance Bonus" zeffort1Xslid "Period 1 Output x Simple Task" giftXslid "Gift x Simple Task" turnXslid "Performance Bonus x Simple Task" transfer1Xslid "Period 1 Output x Simple Task"
 	, elist(_cons "[2mm]" zeffort1 "[2mm]" slider "[2mm]" gift "[2mm]" turnier "[2mm]" feedback "[2mm]" giftXslid "[2mm]" turnXslid "[2mm]" feedXslid "[2mm]" zeffort1Xslid "[2mm]" ztransfer1 "[2mm]" ztransfer1Xslid "[2mm]"))
 	stats(N r2, fmt(%9.0f %9.3f) labels("Observations"  "\$R^2$"))	// stats (specify statistics to be displayed for each model in the table footer), fmt() (
 	b(%9.3f)
@@ -227,7 +225,7 @@ esttab using "$mypath\Tables\Output\Referees\Table_Main_Period2_Results_SliderDu
 	prehead(
 	"\begin{table}[h]%" 
 	"\setlength\tabcolsep{2pt}"
-	"\caption{Treatment Effects in Period 2 \\ with Slider Indicator}"
+	"\caption{Treatment Effects in Period 2 on both the Creative and the Simple Task \\ with Simple Indicator}"
 	
 	"\begin{center}%" 
 	"{\small\renewcommand{\arraystretch}{1}%" 
@@ -236,7 +234,7 @@ esttab using "$mypath\Tables\Output\Referees\Table_Main_Period2_Results_SliderDu
 	" & I & II & III \\")
 	posthead("\hline\noalign{\smallskip}") 
 	prefoot("\noalign{\smallskip}\hline"
-	" Controls & NO & NO & YES \\"
+	"Additional Controls & NO & NO & YES \\"
 	"\hline" ) 
 	postfoot(
 	"\hline\hline\noalign{\medskip}"
@@ -245,8 +243,7 @@ esttab using "$mypath\Tables\Output\Referees\Table_Main_Period2_Results_SliderDu
 	"\footnotesize {\it Note:} This table reports the estimated OLS coefficients from Equation \ref{eq:reg}. This table differs from Table \ref{tab:EQ_Pooled_Results} in that it adds an indicator varaible for the slider task." 
 	"The dependent variable is standardized performance in Period 2. $pooled_performance_description "
 	"$treatment_coef_description " 
-	"The interaction effects measure the difference in treatment effects between the creative and the slider task. "
-	"The treatment effects on the slider task are equal to the sum of the main treatment effect (\textit{Gift} or \textit{Performance Bonus}) and its associated interaction effect (\textit{Gift x Slider} and \textit{Performance Bonus x Slider}). \\"
+	"$slider_treatment_effects \\"
 	"$sample_description "
 	"$controls_list "
 	"$errors_stars "

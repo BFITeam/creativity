@@ -127,7 +127,7 @@ file open f using "$mypath/Tables/Output/Appendix/Feedback_Results_Automated.tex
 file write f 
 	"\begin{table}[h]%" _n
 	"\setlength\tabcolsep{2pt}" _n
-	"\caption{Period 2 and Period 3 Effects of the Feedback Treatment}" _n
+	"\caption{Period 2 and Period 3 Effects Sizes of the Feedback Treatment}" _n
 	"\begin{center}%" _n
 	"{\small\renewcommand{\arraystretch}{1}%" _n
 	"\begin{tabular}{lcc}" _n
@@ -150,17 +150,17 @@ file write f
 	"`p3_neg_se_line'" _n	
 	"\noalign{\smallskip}\hline" _n
 	"\noalign{\smallskip}" _n
-	" Controls  & YES & YES \\" _n
+	" Additional Controls  & YES & YES \\" _n
 	" Baseline  & YES & YES \\" _n
-	" Intercept & YES & YES \\" _n
+	" Constant & YES & YES \\" _n
 	"\hline\hline\noalign{\medskip}" _n
 	"\end{tabular}" _n
 	"\begin{minipage}{\textwidth}" _n
-	"\footnotesize {\it Note:}  This table reports the estimated OLS coefficients for the Feedback treatment in Periods 2 and 3. "_n
+	"\footnotesize {\it Note:}  This table reports the estimated OLS coefficients for the \textit{Feedback} treatment in Periods 2 and 3. "_n
 	"$pooled_trans_description " _n
 	"Period 3 effects are also presented separately for those agents who learned that they were or were not among the top two performers. " _n
-	"Feedback effects for Period 2 are estimated using the same specification that we used in Table \ref{tab:EQ_Pooled_Results}, Column III. " _n
-	"For the analysis presented here, we added observations from the two Creative Task with Discretionary Transfers treatments. " _n
+	"\textit{Feedback} effects for Period 2 are estimated using the same specification that we used in Table \ref{tab:EQ_Pooled_Results}, Column III. " _n
+	"For the analysis presented here, we added observations from the two \textit{Creative Task with Discretionary Transfers} treatments. " _n
 	"Post-treatment effects for Period 3 are estimated using the same specifications as presented in Table \ref{tab:Period3} (pooled and split up by positive or negative feedback). " _n
 	"For the Period 3 analysis, regressions are done separately for each task. \\" _n
 	"$sample_description " _n

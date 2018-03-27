@@ -33,9 +33,9 @@ program define get_pvals, rclass
 	if(`p_cr_2' == 0) local p_cr_2 0.000
 	
 	display "Test for tournament and gift having the same effect in creative task: `p_cr'"
-	display "Test for tournament and gift having the same effect in slider task: `p_sl'"
-	display "Test for gift having zero effect in slider task: `p_sl_g_0'"
-	display "Test for tournament having zero effect in slider task: `p_sl_t_0'"
+	display "Test for tournament and gift having the same effect in simple task: `p_sl'"
+	display "Test for gift having zero effect in simple task: `p_sl_g_0'"
+	display "Test for tournament having zero effect in simple task: `p_sl_t_0'"
 	display "Test for gift having effect size of 0.2 in creative task: `p_cr_2'"
 	
 	return local p_cr `p_cr'
@@ -61,7 +61,7 @@ get_pvals
 esttab using "$mypath\Tables\Output\Appendix\BaselineRegressions.tex", replace
 	nomtitles	
 	label	   
-	varlabel (_cons "Intercept" ztransfer1 "Baseline" zeffort1 "Baseline" slider "Slider-Task" gift "Gift" turnier "Performance Bonus" zeffort1Xslid "Baseline x Slider-Task" giftXslid "Gift x Slider-Task" turnXslid "Performance Bonus x Slider-Task" ztransfer1Xslid "Baseline x Slider-Task"
+	varlabel (_cons "Constant" ztransfer1 "Period 1 Output" zeffort1 "Period 1 Output" slider "Simple Task" gift "Gift" turnier "Performance Bonus" zeffort1Xslid "Period 1 Output x Simple Task" giftXslid "Gift x Simple Task" turnXslid "Performance Bonus x Simple Task" ztransfer1Xslid "Period 1 Output x Simple Task"
 	, elist(_cons "[2mm]" zeffort1 "[2mm]" slider "[2mm]" gift "[2mm]" turnier "[2mm]" feedback "[2mm]" giftXslid "[2mm]" turnXslid "[2mm]" feedXslid "[2mm]" zeffort1Xslid "[2mm]" ztransfer1 "[2mm]" ztransfer1Xslid "[2mm]"))
 	starlevels(* .10 ** 0.05 *** .01) 														
 	stats(N r2, fmt(%9.0f %9.3f) labels("Observations"  "\$R^2$"))	// stats (specify statistics to be displayed for each model in the table footer), fmt() (
@@ -77,32 +77,31 @@ esttab using "$mypath\Tables\Output\Appendix\BaselineRegressions.tex", replace
 	"\captionsetup{justification=centering}"
 	"\setlength\tabcolsep{2pt}"
 	"\begin{center}%"
-	"\caption{Treatment Effects by Above and Below Average Baseline Performance}"
+	"\caption{Treatment Effects by Above and Below Average Period 1 Output}"
 	"\label{tab:BaselineReg}"
 	"{\small\renewcommand{\arraystretch}{1}%" 
 	"\begin{tabular}{lcc}" 
 	"\hline\hline\noalign{\smallskip}"
-	" & \multicolumn{2}{c}{\bf Standardized Performance in Period 2} \\"
-	"\cline{2-3} "
-	" & \bf Baseline Performance & \bf Baseline Performance \\"
+	" & \multicolumn{2}{c}{\bf Standardized Output in Period 2} \\"
+	"\cmidrule{2-3} "
+	" & \bf Period 1 Output & \bf Period 1 Output \\"
 	" & \bf Below Average & \bf Above Average \\"
 	)
 	posthead("\hline\noalign{\smallskip}")
 	prefoot("\hline"
 	"\noalign{\smallskip}"
-	"Controls & YES & YES  \\"
+	"Additional Controls & YES & YES  \\"
 	"\hline"
 	"\noalign{\smallskip}")
 	postfoot("\hline\hline\noalign{\medskip}"
 	"\end{tabular}}"
 	"\begin{minipage}{\textwidth}"
 	"\footnotesize {\it Note:} "
-	"This table reports the estimated OLS coefficients from Equation \ref{eq:reg} split by baseline performance. " 
-	"The columns report treatment effects on the performance of agents whose performance was below average (the first column) and above average (the second column) in Period 1 as compared to the Control group. " 
-	"The dependent variable is standardized performance in Period 2. $pooled_performance_description "
+	"This table reports the estimated OLS coefficients from Equation \ref{eq:reg} split by Period 1 output. " 
+	"The columns report treatment effects on the output of agents whose output was below average (the first column) and above average (the second column) in Period 1 as compared to the \textit{Control} group. " 
+	"The dependent variable is standardized output in Period 2. $pooled_performance_description "
 	"$treatment_coef_description " 
-	"The interaction effects measure the difference in treatment effects between the creative and the slider task. "
-	"The treatment effects on the slider task equals the sum of the main treatment effect (\textit{Gift} or \textit{Performance Bonus}) and its associated interaction effect (\textit{Gift x Slider} and \textit{Performance Bonus x Slider}). \\"
+	"$slider_treatment_effects \\"
 	"$sample_description "
 	"$controls_list "
 	"$errors_stars "

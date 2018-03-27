@@ -356,13 +356,13 @@ file write f
 	"\end{tabular}}" _n
 	"\begin{minipage}{1.2\textwidth}" _n
 	"\footnotesize {\it Note:} This table reports raw, unstandardized, average output, time spent working, and output per second of time worked. " _n 
-	"Output refers to the number of correctly positioned sliders in the slider task and to the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure). " _n
+	"$pooled_performance_description " _n
 	"Time worked is the total time (180 seconds) less the number of breaks times the length of breaks (20 seconds). " _n
 	"Output per second of time worked is the ratio of those two quantities. " _n
 	"$breaks_description " _n
 	"Log Difference is the log of the treatment group statistic less the log of the control group statistic. Log differences provide a sense of relative effect sizes. " _n
 	"Numbers may not add up due to rounding. " _n
-	"For simplicity, this analysis ignores baseline differences in performance. " _n
+	"For simplicity, this analysis ignores differences in Period 1 output. " _n
 	"$treatment_description " _n
 	"$sample_description "_n
 	"\end{minipage}" _n

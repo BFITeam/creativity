@@ -28,7 +28,7 @@ esttab using "$mypath\Tables\Output\Referees\Transfer_Breakdown.tex", replace
 	nomtitles	
 	label	   
 	rename(zscore1 baseline ztransfer1 baseline transfer1 baseline)
-	varlabel (_cons "Intercept" baseline "Baseline" gift_transfer "Gift" )
+	varlabel (_cons "Constant" baseline "Period 1 Output" gift_transfer "Gift" )
 	starlevels(* .10 ** 0.05 *** .01) 														
 	stats(N r2, fmt(%9.0f %9.3f) labels("Observations"  "\$R^2$"))	// stats (specify statistics to be displayed for each model in the table footer), fmt() (
 	b(%9.3f)
@@ -210,12 +210,12 @@ file write f
 	"\end{tabular}}" _n
 	"\begin{minipage}{\textwidth}" _n
 	"\footnotesize {\it Note:} This table reports mean values by treatment and by whether or not the agent transferred the maximum amount (all of the output they produced) to the principal in Period 1. "  _n
-	"In the Creative Task with Discretionary Transfer treatments (Control and Gift), agents learned how many points (how much output) they had generated for the principal in the previous round and could then decide how many of these points to transfer to the principal. "
-	"This procedure contrasts with the main experiment in that in the main experiment the output of the agents was automatically transferred to the principal as profit. "
+	"$ctdt_description "
+	"$ctdt_contrast "
 	"Agents with a creativity score of 0 and who, therefore, cannot transfer any amount are included in the final two columns. " _n
 	"Note that this analysis uses the score that participants saw during the experiment instead of the score used in our main analyses that uses updated originality ratings. "
 	"Transfer refers to the amount of output that the agent transfers to the principal. \\" _n
-	"The estimation includes all agents from the Discretionary Transfer -- Control group as well as agents from the Discretionary Transfer -- Gift group where the principal decided to implement the gift. Agents whose principals chose not to implement the gift are not included in this analysis.  " _n
+	"$ctdt_sample  " _n
 	"\end{minipage}" _n
 	"\end{center}" _n
 	"\end{table}" _n;
@@ -258,7 +258,7 @@ test [not_max_mean]gift_transfer == [main_ctdt_mean]gift
 esttab using "$mypath\Tables\Output\Appendix\Transfer_by_max_transfer.tex", replace
 	nomtitles	
 	label	   
-	varlabel (_cons "Intercept" ztransfer1 "Baseline" gift_transfer "Gift" )
+	varlabel (_cons "Constant" ztransfer1 "Period 1 Transfer" gift_transfer "Gift" )
 	starlevels(* .10 ** 0.05 *** .01) 														
 	stats(N r2, fmt(%9.0f %9.3f) labels("Observations"  "\$R^2$"))	// stats (specify statistics to be displayed for each model in the table footer), fmt() (
 	b(%9.3f)
@@ -285,20 +285,20 @@ esttab using "$mypath\Tables\Output\Appendix\Transfer_by_max_transfer.tex", repl
 	posthead("\hline\noalign{\smallskip}")
 	prefoot("\hline"
 	"\noalign{\smallskip}"
-	"Controls & NO & NO  \\"
+	"Additional Controls & NO & NO  \\"
 	"\hline"
 	"\noalign{\smallskip}")
 	postfoot("\hline\hline\noalign{\medskip}"
 	"\end{tabular}}"
 	"\begin{minipage}{\textwidth}"
-	"\footnotesize {\it Note:} This table reports the results from the supplementary Creative Task with Discretionary Transfer treatments by whether agents transferred the maximum amount (all of the output they produced) in Period 1. "
+	"\footnotesize {\it Note:} This table reports the results from the supplementary \textit{Creative Task with Discretionary Transfer} treatments by whether agents transferred the maximum amount (all of the output they produced) in Period 1. "
 	"Treatment effects are estimated using the same specification that we used in Table \ref{tab:Discretionary}, Column I except for the split into two groups by transfers in Period 1. "
-	"In these treatments (Control and Gift), agents learned how many points (how much output) they had generated for the principal in the previous round and could then decide how many of these points to transfer to the principal. "
-	"This procedure contrasts with the main experiment in that in the main experiment the output of the agents was automatically transferred to the principal as profit. "
-	"This table reports the estimated OLS coefficients from a regression of standardized amount transferred in Period 2 on an indicator for \textit{Gift} treatment and standardized amount transferred in Period 1. " 
-	"The treatment dummy \textit{Gift} captures the effect of an unconditional wage gift on the standardized amount transferred back to the principal. "
+	"$ctdt_description "
+	"$ctdt_contrast "
+	"$ctdt_regression " 
+	"$ctdt_gift_coef_description "
 	"Agents with a creativity score of 0 and who, therefore, cannot transfer any amount are included in the first column. \\"
-	"The estimation includes all agents from the Discretionary Transfer -- Control group as well as agents from the Discretionary Transfer -- Gift group where the principal decided to implement the gift. Agents whose principals chose not to implement the gift are not included in this analysis. "
+	"$ctdt_sample "
 	"$errors_stars "
 	"\end{minipage}"
 	"\end{center}"
