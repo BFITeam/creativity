@@ -137,7 +137,7 @@ y <- fitted(np_plot_data$plr5)
 x <- np_plot_data$plr5$evalz[,1]
 
 png(paste0(path,"/Results/np_reg.png"))
-plot(y ~ x, type = "n",xlab = "Period 1 Performance",ylab = "Period 2 Performance")
+plot(y ~ x, type = "n",xlab = "Period 1 Output",ylab = "Period 2 Output")
 lines(y~x)
 dev.off()
 
