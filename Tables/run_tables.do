@@ -9,23 +9,32 @@ global controls age age2 sex ferienzeit pruefungszeit wiwi recht nawi gewi mannh
 
 //footnote globals
 global creative_score_section 3.1
-global pooled_performance_description Performance refers to the number of correctly positioned sliders in the slider task and to the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure). 
-global pooled_trans_description Performance is measured as the number of correctly positioned sliders in the slider task, as the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure), and as the amount transferred in the discretionary transfer task. 
+global pooled_performance_description Output refers to the number of correctly positioned sliders in the simple task and to the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure in the creative task). 
+global pooled_trans_description Output is measured as the number of correctly positioned sliders in the simple task, as the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure in the creative task), and as the amount transferred in the discretionary transfer task. 
 
-global slider_description In the slider task, agents are evaluated by the number of correctly positioned sliders.
-global creative_description In the creative task, agends are evaluated by the creativity score (please refer to section $creative_score_section for a description of the scoring procedure). 
-global ctdt_description In the Creative Task with Discretionary Transfer activity, participants complete the creative task. At the end of each period, they see how many Taler they earned and may transfer up to that amount to their principal. 
+global slider_description In the simple task, agents are evaluated by the number of correctly positioned sliders.
+global creative_description In the creative task, agends are evaluated by the creativity score (please refer to section $creative_score_section for a description of the scoring procedure in the creative task). 
 
-global treatment_coef_description The treatment dummies \textit{Gift} and \textit{Performance Bonus} capture the effect of an unconditional wage gift or of a performance bonus (rewarding the top two performers out of four agents) on standardized performance in the creative task. 
-global treatment_description In the Gift and Performance Bonus treatment groups, the principals could choose to implement an unconditional wage gift or a performance bonus (rewarding the top two performers out of their four agents) between Periods 1 and 2. 
-global Gift_description In the Gift treatment group, the principals could choose to implement an unconditional wage gift between Periods 1 and 2.
+global ctdt_description In the supplementary gift treatment and the supplementary control treatment, agents learned how much output they had generated for the principal in the previous round and could then decide how much of that output to transfer to the principal. 
+global ctdt_contrast This procedure contrasts with the main experiment in that in the main experiment all of each agent's output was automatically transferred to the principal as payoff. 
+global ctdt_gift_coef_description The treatment dummy \textit{Gift} captures the effect of a performance-independent wage gift for all on the standardized amount transferred back to the principal.
+global ctdt_sample The estimations include all agents from the \textit{Creative Task with Discretionary Transfers -- Control} group as well as agents from the \textit{Creative Task with Discretionary Transfers -- Gift} treatment group for which the principal decided to implement the gift. Agents whose principals chose not to implement the gift are not included in this analysis.
+global ctdt_regression This table reports the estimated OLS coefficients from a regression of the standardized amount transferred in Period 2 on an indicator for \textit{Gift} treatment and on the standardized amount transferred in Period 1.
+
+global slider_treatment_effects The interaction effects measure the difference in treatment effects between the creative and the simple task. 
+global slider_treatment_effects $slider_treatment_effects The treatment effects on the slider task equal the sum of the main treatment effect (\textit{Gift} or \textit{Performance Bonus}) and its associated interaction effect (\textit{Gift x Simple Task} and \textit{Performance Bonus x Simple Task}). 
+
+
+global treatment_coef_description The treatment dummies \textit{Gift} and \textit{Performance Bonus} capture the effect of a performance-independent wage gift for all or of a performance-dependent performance bonus (rewarding the top two performers out of four agents) on standardized output in the creative task. 
+global treatment_description In the \textit{Gift} and \textit{Performance Bonus} treatment groups, the principals could choose to implement a performance-independent wage gift for all or a performance-dependent performance bonus (rewarding the top two performers out of their four agents) between Periods 1 and 2. 
+global Gift_description In the \textit{Gift} treatment group, the principals could choose to implement a performance-independent wage gift for all between Periods 1 and 2.
 global Tournament_description In the Performance Bonus treatment group, the principals could choose to implement a performance bonus incentive (rewarding the top two performers out of their four agents) between Periods 1 and 2.
 
-global reward_sample Agents whose principal did not implement a reward scheme are not included in this analysis. 
-global sample_description Each estimation includes all agents from the Control group and agents from treatment groups where the principal decided to implement the performance bonus or gift. $reward_sample
-global sample_description_nonreg The sample includes all agents from the Control group and agents from treatment groups where the principal decided to implement the performance bonus or gift. $reward_sample
-global Gift_sample_description Each estimation includes all agents from the Control group and agents from Gift treatment groups where the principal decided to institute the gift. $reward_sample
-global Tournament_sample_description Each estimation includes all agents from the Control group and agents from Performance Bonus treatment groups where the principal decided to institute the performance bonus. $reward_sample
+global reward_sample Agents whose principal did not implement a reward are not included in this analysis. 
+global sample_description Each estimation includes all agents from the \textit{Control} group and agents from treatment groups for which the principal decided to implement the performance bonus or gift. $reward_sample
+global sample_description_nonreg The sample includes all agents from the \textit{Control} group and agents from treatment groups for which the principal decided to implement the performance bonus or gift. $reward_sample
+global Gift_sample_description Each estimation includes all agents from the \textit{Control} group and agents from \textit{Gift} treatment groups for which the principal decided to implement the gift. $reward_sample
+global Tournament_sample_description Each estimation includes all agents from the \textit{Control} group and agents from \textit{Performance Bonus} treatment groups for which the principal decided to implement the performance bonus. $reward_sample
 
 global controls_list Additional control variables are age, age squared, sex, location, field of study, and a set of time fixed effects (semester period, semester break, exam period). 
 global errors_stars Heteroscedastic-robust standard errors are reported in parentheses. Significance levels are denoted as follows: * p < 0.1, ** p < 0.05, *** p < 0.01.
