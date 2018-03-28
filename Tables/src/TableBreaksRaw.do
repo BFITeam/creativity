@@ -15,7 +15,7 @@ gen time2 = 180-pausen2*20
 gen pausendif = pausen2 - pausen1
 
 //Make formated variables for table output
-gen Task = "Slider" if slider == 1
+gen Task = "Simple" if slider == 1
 replace Task = "Creative" if creative == 1
 
 gen Treatment = "Control" if treatment == 1
@@ -44,31 +44,76 @@ list
 
 //tex output
 replace Treatment = "Performance Bonus" if Treatment == "Tournament"
-#delimit;
-listtex using "$mypath\Tables\Output\Appendix\Num_Breaks.tex", replace end("\\")
-	head("\begin{table}[h]%" 
-	"\setlength\tabcolsep{2pt}" 
-	"\caption{Average Number of Breaks Taken by Treatment and Period}" 
-	"\label{tab:BreaksMeans}"
-	"\begin{center}%" 
-	"{\small\renewcommand{\arraystretch}{1}%" 
-	"\begin{tabular}{llcc}" 
-	"\hline\hline\noalign{\smallskip}" 
-	"\bf Task & \bf Treatment & \bf Breaks in & \bf Breaks in \\" 
-	"	 	  & 		  	  & \bf Period 1  & \bf Period 2 \\" 
-	"\hline" 
-	"\noalign{\smallskip}")
-	foot("\hline\hline\noalign{\medskip}"
-	"\end{tabular}}"
-	"\begin{minipage}{\textwidth}"
-	"\footnotesize {\it Note:} This table reports the average number of breaks by task, treatment, and period. " 
-	"$breaks_description "
-	"$treatment_description "
-	"$sample_description_nonreg "
-	"\end{minipage}"
-	"\end{center}"
-	"\end{table}");
+
+capture program drop breaks_row_output
+program define breaks_row_output, rclass
+	args task treatment
+	//Correction for Performance Bonus being two words
+	if "`treatment'" == "Tournament" local treatment Performance Bonus
+	
+	quietly: sum pausen1 if Task == "`task'" & Treatment == "`treatment'"
+	local breaks1 = `r(mean)'
+	
+	quietly: sum pausen2 if Task == "`task'" & Treatment == "`treatment'"
+	local breaks2 = `r(mean)'
+	
+	local format %4.2f
+	
+	//only write the task name in the control line
+	if ("`treatment'" != "Control"){
+		local task 
+	}
+	
+	return local line "`task' & `treatment' & " `format' (`breaks1') " & " `format' (`breaks2') " \\"
+end
+
+breaks_row_output Simple Gift
+local Simple_Control_line `r(line)'
+di "`Simple_Control_line'"
+
+foreach task in Simple Creative{
+	foreach treatment in Control Gift Tournament {
+		breaks_row_output `task' `treatment'
+		local `task'_`treatment'_line `r(line)'
+		di "``task'_`treatment'_line'"
+	}
+}
+
+cap file close f 
+file open f using "$mypath/Tables/Output/Appendix/Num_Breaks.tex", write replace
+
+#delimit ;
+file write f 
+	"\begin{table}[h]%"  _n
+	"\setlength\tabcolsep{2pt}"  _n
+	"\caption{Average Number of Breaks Taken by Treatment and Period}"  _n
+	"\label{tab:BreaksMeans}" _n
+	"\begin{center}%"  _n
+	"{\small\renewcommand{\arraystretch}{1}%"  _n
+	"\begin{tabular}{llcc}"  _n
+	"\hline\hline\noalign{\smallskip}"  _n
+	"\bf Task & \bf Treatment & \bf Breaks in & \bf Breaks in \\"  _n
+	"	 	  & 		  	  & \bf Period 1  & \bf Period 2 \\"  _n
+	"\hline"  _n
+	"\noalign{\smallskip}" _n
+	"`Simple_Control_line'" _n
+	"`Simple_Gift_line'" _n
+	"`Simple_Tournament_line'" _n
+	"`Creative_Control_line'" _n
+	"`Creative_Gift_line'" _n
+	"`Creative_Tournament_line'" _n
+	"\hline\hline\noalign{\medskip}" _n
+	"\end{tabular}}" _n
+	"\begin{minipage}{\textwidth}" _n
+	"\footnotesize {\it Note:} This table reports the average number of breaks by task, treatment, and period. "  _n
+	"$breaks_description ``Breaks$close_latex_quote refer to uses of the time-out button. " _n
+	"$treatment_description " _n
+	"$sample_description_nonreg " _n
+	"\end{minipage}" _n
+	"\end{center}" _n
+	"\end{table}";
 #delimit cr
+file close f
 
 restore
 
@@ -238,15 +283,15 @@ foreach task in slider creative{
 }
 
 //variable name headers
-local combined_headers1 \bf Treatment & \bf Output & \bf Time Worked & \bf Output per Second && \bf Output & \bf Time Worked & \bf Output per Second \\
-local combined_headers2 		& & \bf (out of 180s) & \bf of Time Worked & & & \bf (out of 180s) & \bf of Time Worked \\
+local combined_headers1 \bf Treatment & \bf \hspace{5pt} Average \hspace{5pt} & \bf Time Worked &  \hspace{5pt} \bf Output per Second  \hspace{5pt} && \bf  \hspace{5pt} Average \hspace{5pt} & \bf Time Worked & \bf  \hspace{5pt} Output per Second \hspace{5pt} \\
+local combined_headers2 		& \bf Output & \bf (out of 180s) & \bf of Time Worked & & \bf Output & \bf (out of 180s) & \bf of Time Worked \\
 local p2_headers \bf Treatment & \bf Output Period 2 & \bf Time Worked Period 2 & \bf Output per Time Worked && \bf Output Period 2 & \bf Time Worked Period 2 & \bf Output per Time Worked \\
 local p1_headers \bf Treatment & \bf Output Period 1 & \bf Time Worked Period 1 & \bf Output per Time Worked && \bf Output Period 1 & \bf Time Worked Period 1 & \bf Output per Time Worked \\
 local dd_headers1 \bf Treatment & \bf Difference in & \bf Difference in & \bf Difference in 		 && \bf Difference in & \bf Difference in & \bf Difference in 		 \\
 local dd_headers2  			& \bf Output 		& \bf Time Worked 	& \bf Output per Time Worked && \bf Output 		& \bf Time Worked 	& \bf Output per Time Worked \\
 
-//slider/creative headers
-local task_header & \multicolumn{3}{c}{\bf Slider Task} & & \multicolumn{3}{c}{\bf Creative Task} \\ \cline{2-4} \cline{6-8}
+//simple/creative headers
+local task_header & \multicolumn{3}{c}{\bf Simple Task} & & \multicolumn{3}{c}{\bf Creative Task} \\ \cline{2-4} \cline{6-8}
 
 local format %9.2f
 //data rows
@@ -356,11 +401,11 @@ file write f
 	"\end{tabular}}" _n
 	"\begin{minipage}{1.2\textwidth}" _n
 	"\footnotesize {\it Note:} This table reports raw, unstandardized, average output, time spent working, and output per second of time worked. " _n 
-	"$pooled_performance_description " _n
-	"Time worked is the total time (180 seconds) less the number of breaks times the length of breaks (20 seconds). " _n
-	"Output per second of time worked is the ratio of those two quantities. " _n
-	"$breaks_description " _n
-	"Log Difference is the log of the treatment group statistic less the log of the control group statistic. Log differences provide a sense of relative effect sizes. " _n
+	"``Average output$close_latex_quote refers to the number of correctly positioned sliders in the simple task and to the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure in the creative task). " _n
+	"``Time worked$close_latex_quote is the total time (180 seconds) less the number of breaks times the length of breaks (20 seconds). " _n
+	"``Output per second of time worked$close_latex_quote is the ratio of those two quantities. " _n
+	"$breaks_description ``Breaks$close_latex_quote refer to uses of the time-out button. " _n
+	"``Log difference$close_latex_quote is the log of the treatment group statistic less the log of the \textit{Control} group statistic. Log differences provide a sense of relative effect sizes. " _n
 	"Numbers may not add up due to rounding. " _n
 	"For simplicity, this analysis ignores differences in Period 1 output. " _n
 	"$treatment_description " _n

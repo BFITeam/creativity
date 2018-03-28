@@ -49,7 +49,7 @@ esttab using "$mypath\Tables\Output\Appendix\Period3_Results_Automated.tex", // 
 	"{\small\renewcommand{\arraystretch}{1}%" 
 	"\begin{tabular}{lcccc}" 
 	"\hline\hline\noalign{\smallskip}"
-	" & \multicolumn{2}{c}{\bf Slider} & \multicolumn{2}{c}{\bf Creative} \\" 
+	" & \multicolumn{2}{c}{\bf Simple Task} & \multicolumn{2}{c}{\bf Creative Task} \\" 
 	" & I & II & III & IV \\")
 	posthead("\hline\noalign{\smallskip}") 
 	prefoot("\noalign{\smallskip}\hline"
@@ -62,10 +62,10 @@ esttab using "$mypath\Tables\Output\Appendix\Period3_Results_Automated.tex", // 
 	"\end{tabular}"
 	"\begin{minipage}{\textwidth}"
 	"\footnotesize {\it Note:} This table reports the estimated OLS coefficients in Period 3. " 
-	"The analysis follows the set-up laid out in Equation 1, with the exception that we estimate the equation separately for both tasks in this specification. "
+	"The analysis shown in this table follows the set-up laid out in Equation 1, with the exception that we now estimate the equation separately for both tasks in this specification. "
 	"$pooled_trans_description "
 	"The treatment dummies \textit{Gift} and \textit{Performance Bonus} capture the effect of a performance-independent wage gift for all or of a performance-dependent performance bonus (rewarding the top two performers out of four agents) on standardized output. " 
-	"The \textit{Discretionary Transfer} coefficient captures any difference between the \textit{Creative Task with Discretionary Transfer -- Control} group and the \textit{Control} group in the creative task. "
+	"The \textit{Discretionary Transfer} coefficient captures any difference between the \textit{Creative Task with Discretionary Transfer -- Control} group and the main \textit{Control} group. "
 	"The \textit{Discretionary Transfer x Gift} coefficient captures the effect of a performance-independent wage gift for all on the standardized amount transferred to the principal. "
 	"That is, the estimated effect of allowing discretionary transfers and offering a wage gift in the creative task equals the sum of the \textit{Discretionary Transfer x Gift} coefficient and the \textit{Discretionary Transfer} coefficient. \\"
 	"$sample_description "

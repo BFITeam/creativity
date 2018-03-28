@@ -58,6 +58,10 @@ capture program define report_balance
 	
 	di "Overall average"
 	sum `var'
+	
+	di "Overall average excluding feedback"
+	sum `var' if treatment != 4
+	
 	/*
 	//mixed tasks
 	di "Mixed tasks"

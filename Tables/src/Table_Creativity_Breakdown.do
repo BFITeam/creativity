@@ -83,7 +83,6 @@ forvalues i = 1/`num_regs'{
 	local controls_row `controls_row' & YES
 }
 
-local close_latex_quote ''
 #delimit; // #delimit: command resets the character that marks the end of a command, here ;
 esttab using "$mypath\Tables\Output\Table_Creativity_Breakdown.tex", 
 	label	   // label (make use of variable labels)
@@ -128,7 +127,7 @@ esttab using "$mypath\Tables\Output\Table_Creativity_Breakdown.tex",
 	"In Columns II, III, and IV, the dependent variables are the three different standardized subdimensions of the creativity score (validity, flexibility, and originality). "
 	"Columns V and VI display treatment effects on the unstandardized flexibility and originality rate. "
 	"The flexibility (originality) rate equals flexibility (originality) points divided by the number of valid answers. Subjects with zero valid answers are dropped from these columns. "
-	"Column VII reports results for a subjective assessment of idea quality (unstandardized). To create this variable, an evaluator blind to the treatments was instructed to indicate for each idea whether they considered it to be a ``best`close_latex_quote' or ``outstanding`close_latex_quote' idea. "
+	"Column VII reports results for a subjective assessment of idea quality (unstandardized). To create this variable, an evaluator blind to the treatments was instructed to indicate for each idea whether they considered it to be a ``best$close_latex_quote or ``outstanding$close_latex_quote idea. "
 	"Column VIII report results for invalid uses (unstandardized). \\"
 	"$sample_description "
 	"$controls_list "

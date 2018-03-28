@@ -150,7 +150,7 @@ replace trans_treat_split = "min_control" if gift_transfer == 0 & p1_max_trans =
 replace trans_treat_split = "min_gift" if gift_transfer == 1 & p1_max_trans == 0 & creative_trans == 1
 
 bysort trans_treat_split : gen counter = _N
-summary_row counter "N"
+summary_row counter "Observations"
 local count_row `r(row)'
 
 
@@ -185,14 +185,14 @@ file open f using "$mypath\Tables\Output\Appendix\Transfer_summary_stats.tex", w
 file write f 
 	"\begin{table}[h]%" _n
 	"\setlength\tabcolsep{2pt}"
-	"\caption{Summary Statistics by Amount Transferred}" _n
+	"\caption{Summary Statistics by Amount Transferred in the Creative task with Discretionary Transfer Treatments}" _n
 	"\label{tab:TransferStats}" _n
 	"\begin{center}%"  _n
 	"{\small\renewcommand{\arraystretch}{1}%"  _n
 	"\begin{tabular}{lcccccccc}"  _n
 	"\hline\hline\noalign{\smallskip}" _n
-	" \bf 		 	& \multicolumn{2}{c}{\bf All Agents} && \multicolumn{2}{c}{\bf Agents who do transfer} && \multicolumn{2}{c}{\bf Agents who do not transfer} \\" _n
-	" 				& \multicolumn{2}{c}{} && \multicolumn{2}{c}{\bf the maximum in Period 1} && \multicolumn{2}{c}{\bf the maximum in Period 1} \\" _n
+	" \bf 		 	& \multicolumn{2}{c}{\bf All Agents} && \multicolumn{2}{c}{\bf Agents who do transfer all} && \multicolumn{2}{c}{\bf Agents who do not transfer all} \\" _n
+	" 				& \multicolumn{2}{c}{} && \multicolumn{2}{c}{\bf of their output in Period 1} && \multicolumn{2}{c}{\bf of their output in Period 1} \\" _n
 	"\cline{2-3} \cline{5-6} \cline{8-9}"  _n
 	"				& \bf Control & \bf Gift && \bf \hspace{`space_amt'pt} Control & \bf Gift && \hspace{`space_amt'pt}  \bf Control & \bf Gift \\"
 	"\hline"  _n
@@ -209,12 +209,14 @@ file write f
 	"\hline\hline\noalign{\medskip}" _n
 	"\end{tabular}}" _n
 	"\begin{minipage}{\textwidth}" _n
-	"\footnotesize {\it Note:} This table reports mean values by treatment and by whether or not the agent transferred the maximum amount (all of the output they produced) to the principal in Period 1. "  _n
+	"\footnotesize {\it Note:} This table reports mean values by treatment and by whether or not the agent transferred all of the output they produced to the principal in Period 1. "  _n
 	"$ctdt_description "
 	"$ctdt_contrast "
-	"Agents with a creativity score of 0 and who, therefore, cannot transfer any amount are included in the final two columns. " _n
-	"Note that this analysis uses the score that participants saw during the experiment instead of the score used in our main analyses that uses updated originality ratings. "
-	"Transfer refers to the amount of output that the agent transfers to the principal. \\" _n
+	"Note that the estimations in this table are based on the value of output that was communicated to the subjects during the experiment, which relied on originality ratings from our pre-test. " _n 
+	"The value of output that we use in our main analysis was calculated using an updated originality rating scale. "
+	"``Output$close_latex_quote refers to the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure in the creative task). "
+	"``Transfer$close_latex_quote refers to the amount of output that the agent transfers to the principal. " _n
+	"Agents with a creativity score of 0 and who, therefore, cannot transfer any amount are included in the final two columns. \\" _n
 	"$ctdt_sample  " _n
 	"\end{minipage}" _n
 	"\end{center}" _n
@@ -271,7 +273,7 @@ esttab using "$mypath\Tables\Output\Appendix\Transfer_by_max_transfer.tex", repl
 	prehead(
 	"\begin{table}[h]%" 
 	"\setlength\tabcolsep{2pt}"
-	"\caption{Treatment Effects by Amount Transferred}"
+	"\caption{Treatment Effects in the Creative Task with Discretionary Transfers Treatments by Amount Transferred}"
 	"\label{tab:TransferSplit}"
 	"\begin{center}%" 
 	"{\small\renewcommand{\arraystretch}{1}%" 
@@ -279,8 +281,8 @@ esttab using "$mypath\Tables\Output\Appendix\Transfer_by_max_transfer.tex", repl
 	"\hline\hline\noalign{\smallskip}"
 	" & \multicolumn{2}{c}{\bf Standardized Transfer in Period 2} \\"
 	"\cline{2-3} "
-	" & \bf Agents who do not transfer & \bf Agents who do transfer \\"
-	" & \bf the maximum in Period 1 & \bf the maximum in Period 1 \\"
+	" & \bf \hspace{5pt} Agents who do not transfer all \hspace{5pt} & \hspace{5pt} \bf Agents who do transfer all \hspace{5pt} \\"
+	" & \bf of their output in Period 1 & \bf of their output in Period 1 \\"
 	)
 	posthead("\hline\noalign{\smallskip}")
 	prefoot("\hline"
@@ -291,8 +293,9 @@ esttab using "$mypath\Tables\Output\Appendix\Transfer_by_max_transfer.tex", repl
 	postfoot("\hline\hline\noalign{\medskip}"
 	"\end{tabular}}"
 	"\begin{minipage}{\textwidth}"
-	"\footnotesize {\it Note:} This table reports the results from the supplementary \textit{Creative Task with Discretionary Transfer} treatments by whether agents transferred the maximum amount (all of the output they produced) in Period 1. "
-	"Treatment effects are estimated using the same specification that we used in Table \ref{tab:Discretionary}, Column I except for the split into two groups by transfers in Period 1. "
+	"\footnotesize {\it Note:} This table reports the results from the supplementary \textit{Creative Task with Discretionary Transfer -- Gift} treatment and its associated \textit{Creative Task with Discretionary Transfer -- Control} group. "
+	"Regressions are split up by whether agents transferred all of their output in Period 1. "
+	"Treatment effects are estimated using the same specification that we used in Table \ref{tab:Discretionary}, Column I. "
 	"$ctdt_description "
 	"$ctdt_contrast "
 	"$ctdt_regression " 

@@ -45,7 +45,7 @@ foreach var in slider creative transfer {
 save "$mypath\Figures\Data\FigureGiftEffects_Aufbereitet.dta", replace
 
 graph twoway (bar coefficient treatment, fcolor(emidblue) barwidth(0.8))(rcap high low treatment, lwidth(thick)), 	///
-	ytitle("Effect Sizes in Standard Deviations") ///
+	ytitle("Effect Sizes in Standard Deviation Units") ///
 	xlabel( 1 `" "Gift Treatment" "Simple Task" "(Main Treatment)" "' 2 `" "Gift Treatment" "Creative Task" "(Main Treatment)" "' 3 `" "Gift Treatment" "Creative Task with" "Discretionary Transfers" "(Supplementary Treatment)" "', noticks) 	///
 	xtitle(" ") ylabel(-0.2 (0.2) 0.6) subtitle("") legend(order(2 "90% Confidence Interval"))  ///
 	saving("$mypath\Figures\Graphs\Figure5.gph", replace) 

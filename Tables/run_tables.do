@@ -8,9 +8,12 @@ assert("$mypath" != "")
 global controls age age2 sex ferienzeit pruefungszeit wiwi recht nawi gewi mannheim
 
 //footnote globals
+//this needs to be in a macro for stata's line parsing (it thinks latex quotes are locals otherwise)
+global close_latex_quote '' 
+
 global creative_score_section 3.1
 global pooled_performance_description Output refers to the number of correctly positioned sliders in the simple task and to the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure in the creative task). 
-global pooled_trans_description Output is measured as the number of correctly positioned sliders in the simple task, as the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure in the creative task), and as the amount transferred in the discretionary transfer task. 
+global pooled_trans_description Output is measured as the number of correctly positioned sliders in the simple task, as the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure in the creative task), and as the amount transferred in the discretionary transfer treatments. 
 
 global slider_description In the simple task, agents are evaluated by the number of correctly positioned sliders.
 global creative_description In the creative task, agends are evaluated by the creativity score (please refer to section $creative_score_section for a description of the scoring procedure in the creative task). 
@@ -33,13 +36,17 @@ global Tournament_description In the Performance Bonus treatment group, the prin
 global reward_sample Agents whose principal did not implement a reward are not included in this analysis. 
 global sample_description Each estimation includes all agents from the \textit{Control} group and agents from treatment groups for which the principal decided to implement the performance bonus or gift. $reward_sample
 global sample_description_nonreg The sample includes all agents from the \textit{Control} group and agents from treatment groups for which the principal decided to implement the performance bonus or gift. $reward_sample
+global sample_description_plus_feedback Each estimation includes all agents from the \textit{Control} group and agents from treatment groups for which the principal decided to implement the performance bonus, gift, or feedback. $reward_sample
+
+
 global Gift_sample_description Each estimation includes all agents from the \textit{Control} group and agents from \textit{Gift} treatment groups for which the principal decided to implement the gift. $reward_sample
 global Tournament_sample_description Each estimation includes all agents from the \textit{Control} group and agents from \textit{Performance Bonus} treatment groups for which the principal decided to implement the performance bonus. $reward_sample
 
 global controls_list Additional control variables are age, age squared, sex, location, field of study, and a set of time fixed effects (semester period, semester break, exam period). 
 global errors_stars Heteroscedastic-robust standard errors are reported in parentheses. Significance levels are denoted as follows: * p < 0.1, ** p < 0.05, *** p < 0.01.
 
-global breaks_description To create an opportunity cost of working, we offered agents a time-out button. Each time an agent clicked the time-out button, the computer screen was locked for 20 seconds, and 5 Taler were added to the agent's payoff. Breaks refer to uses of the time-out button. 
+global breaks_description To create an opportunity cost of working, we offered agents a time-out button. Each time an agent clicked the time-out button, the computer screen was locked for 20 seconds, and 5 Taler were added to the agent's payoff. 
+
 
 //make output directory, remove old copy if it exists and make new ones
 capture log close

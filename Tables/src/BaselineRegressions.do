@@ -98,7 +98,7 @@ esttab using "$mypath\Tables\Output\Appendix\BaselineRegressions.tex", replace
 	"\begin{minipage}{\textwidth}"
 	"\footnotesize {\it Note:} "
 	"This table reports the estimated OLS coefficients from Equation \ref{eq:reg} split by Period 1 output. " 
-	"The columns report treatment effects on the output of agents whose output was below average (the first column) and above average (the second column) in Period 1 as compared to the \textit{Control} group. " 
+	"The first column reports treatment effects on the output of agents whose output was below average in Period 1 as compared to the \textit{Control} group; the second column reports treatment effects on the output of agents whose output was above average in Period 1 as compared to the \textit{Control} group. " 
 	"The dependent variable is standardized output in Period 2. $pooled_performance_description "
 	"$treatment_coef_description " 
 	"$slider_treatment_effects \\"

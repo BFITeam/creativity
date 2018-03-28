@@ -151,7 +151,7 @@ file write f
 	"\noalign{\smallskip}\hline" _n
 	"\noalign{\smallskip}" _n
 	" Additional Controls  & YES & YES \\" _n
-	" Baseline  & YES & YES \\" _n
+	" Period 1 Output  & YES & YES \\" _n
 	" Constant & YES & YES \\" _n
 	"\hline\hline\noalign{\medskip}" _n
 	"\end{tabular}" _n
@@ -163,7 +163,7 @@ file write f
 	"For the analysis presented here, we added observations from the two \textit{Creative Task with Discretionary Transfers} treatments. " _n
 	"Post-treatment effects for Period 3 are estimated using the same specifications as presented in Table \ref{tab:Period3} (pooled and split up by positive or negative feedback). " _n
 	"For the Period 3 analysis, regressions are done separately for each task. \\" _n
-	"$sample_description " _n
+	"$sample_description_plus_feedback " _n
 	"$controls_list " _n
 	"$errors_stars " _n
 	"\end{minipage}}" _n

@@ -157,7 +157,7 @@ esttab using "$mypath\Tables\Output\Appendix\Table_Main_Period2_Results_Cluster_
 	prehead(
 	"\begin{table}[h]%" 
 	"\setlength\tabcolsep{2pt}"
-	"\caption{Treatment Effects in Period 2 on both the Creative and the Simple Task \\ (Clustered by Session)}"
+	"\caption{Treatment Effects in Period 2 on both the Creative and the Simple Task \\ (Clustered by Experimental Session)}"
 	
 	"\begin{center}%" 
 	"{\small\renewcommand{\arraystretch}{1}%" 
