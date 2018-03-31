@@ -12,11 +12,11 @@ global controls age age2 sex ferienzeit pruefungszeit wiwi recht nawi gewi mannh
 global close_latex_quote '' 
 
 global creative_score_section 3.2.2
-global pooled_performance_description Output refers to the number of correctly positioned sliders in the simple task and to the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure in the creative task). 
-global pooled_trans_description Output is measured as the number of correctly positioned sliders in the simple task, as the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure in the creative task), and as the amount transferred in the discretionary transfer treatments. 
+global pooled_performance_description Output refers to the number of correctly positioned sliders in the simple task and to the creativity score in the creative task (please refer to Section $creative_score_section for a description of the scoring procedure in the creative task). 
+global pooled_trans_description Output is measured as the number of correctly positioned sliders in the simple task, as the creativity score in the creative task (please refer to Section $creative_score_section for a description of the scoring procedure in the creative task), and as the amount transferred in the discretionary transfer treatments. 
 
 global slider_description In the simple task, agents are evaluated by the number of correctly positioned sliders.
-global creative_description In the creative task, agends are evaluated by the creativity score (please refer to section $creative_score_section for a description of the scoring procedure in the creative task). 
+global creative_description In the creative task, agends are evaluated by the creativity score (please refer to Section $creative_score_section for a description of the scoring procedure in the creative task). 
 
 global ctdt_description In the supplementary gift treatment and the supplementary control treatment, agents learned how much output they had generated for the principal in the previous round and could then decide how much of that output to transfer to the principal. 
 global ctdt_contrast This procedure contrasts with the one in the main creative task \textit{Gift} treatment and the main creative task \textit{Control} group in that in the main treatments each agent's entire output was automatically transferred as payoff to the principal. 

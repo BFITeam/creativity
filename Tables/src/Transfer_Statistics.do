@@ -215,7 +215,7 @@ file write f
 	"$ctdt_contrast "
 	"Note that the estimations in this table are based on the value of output that was communicated to the agents during the experiment, which relied on originality ratings from our pre-test. " _n 
 	"The value of output that we use in our main analysis was calculated using an updated originality rating scale. "
-	"\textit{Output} refers to the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure in the creative task). "
+	"\textit{Output} refers to the creativity score in the creative task (please refer to Section $creative_score_section for a description of the scoring procedure in the creative task). "
 	"\textit{Transfer} refers to the amount of output that the agent transfers to the principal. " _n
 	"Agents with a creativity score of 0 and who, therefore, cannot transfer any amount are included in the final two columns. \\" _n
 	"$ctdt_sample  " _n

@@ -122,7 +122,7 @@ esttab using "$mypath\Tables\Output\Table_Creativity_Breakdown.tex",
 	"\footnotesize {\it Note:} This table reports the estimated OLS coefficients from Equation \ref{eq:reg} using only observations from the creative task. "
 	"$treatment_coef_description "
 	"The dependent variable in Column I is the standardized creativity score in Period 2. "
-	"Please refer to section $creative_score_section for a description of the scoring procedure. "
+	"Please refer to Section $creative_score_section for a description of the scoring procedure. "
 	"In Columns II, III, and IV, the dependent variables are the three different standardized subdimensions of the creativity score (validity, flexibility, and originality). "
 	"Columns V and VI display treatment effects on the unstandardized flexibility and originality rate. "
 	"The flexibility (originality) rate equals flexibility (originality) points divided by the number of validity points. Subjects with zero valid answers are dropped from these two regressions. "

@@ -403,7 +403,7 @@ file write f
 	"\end{tabular}}" _n
 	"\begin{minipage}{1.2\textwidth}" _n
 	"\footnotesize {\it Note:} This table reports raw, unstandardized, average output, time spent working, and output per second of time worked. " _n 
-	"\textit{Average output} refers to the number of correctly positioned sliders in the simple task and to the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure in the creative task). " _n
+	"\textit{Average output} refers to the number of correctly positioned sliders in the simple task and to the creativity score in the creative task (please refer to Section $creative_score_section for a description of the scoring procedure in the creative task). " _n
 	"\textit{Time worked} is the total time (180 seconds) less the number of breaks times the length of breaks (20 seconds). " _n
 	"\textit{Output per second of time worked} is the ratio of those two quantities. " _n
 	"$breaks_description " _n
