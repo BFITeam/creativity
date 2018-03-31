@@ -92,8 +92,9 @@ esttab using "$mypath\Tables\Output\Table_Main_Period2_Results.tex", // esttab p
 	nonumbers 
 	prehead(
 	"\begin{table}[h]%" 
+	"\captionsetup{justification=centering}"
 	"\setlength\tabcolsep{2pt}"
-	"\caption{Treatment Effects in Period 2 on both the Creative and the Simple Task}"
+	"\caption{Treatment Effects on Output in Period 2 in both the Creative and the Simple Task}"
 	
 	"\begin{center}%" 
 	"{\small\renewcommand{\arraystretch}{1}%" 
@@ -156,8 +157,9 @@ esttab using "$mypath\Tables\Output\Appendix\Table_Main_Period2_Results_Cluster_
 	nonumbers 
 	prehead(
 	"\begin{table}[h]%" 
+	"\captionsetup{justification=centering}"
 	"\setlength\tabcolsep{2pt}"
-	"\caption{Treatment Effects in Period 2 on both the Creative and the Simple Task \\ (Clustered by Experimental Session)}"
+	"\caption{Treatment Effects on Output in Period 2 in both the Creative and the Simple Task \\ Clustered by Experimental Session}"
 	
 	"\begin{center}%" 
 	"{\small\renewcommand{\arraystretch}{1}%" 
@@ -225,7 +227,7 @@ esttab using "$mypath\Tables\Output\Referees\Table_Main_Period2_Results_SliderDu
 	prehead(
 	"\begin{table}[h]%" 
 	"\setlength\tabcolsep{2pt}"
-	"\caption{Treatment Effects in Period 2 on both the Creative and the Simple Task \\ with Simple Indicator}"
+	"\caption{Treatment Effects on Output in Period 2 in both the Creative and the Simple Task \\ with Simple Indicator}"
 	
 	"\begin{center}%" 
 	"{\small\renewcommand{\arraystretch}{1}%" 

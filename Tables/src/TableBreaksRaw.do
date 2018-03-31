@@ -92,7 +92,7 @@ file write f
 	"{\small\renewcommand{\arraystretch}{1}%"  _n
 	"\begin{tabular}{llcc}"  _n
 	"\hline\hline\noalign{\smallskip}"  _n
-	"\bf Task & \bf Treatment & \bf Breaks in & \bf Breaks in \\"  _n
+	"\hspace{7pt} \bf Task \hspace{7pt} & \bf Treatment & \bf Breaks in & \bf Breaks in \\"  _n
 	"	 	  & 		  	  & \bf Period 1  & \bf Period 2 \\"  _n
 	"\hline"  _n
 	"\noalign{\smallskip}" _n
@@ -106,7 +106,7 @@ file write f
 	"\end{tabular}}" _n
 	"\begin{minipage}{\textwidth}" _n
 	"\footnotesize {\it Note:} This table reports the average number of breaks by task, treatment, and period. "  _n
-	"$breaks_description ``Breaks$close_latex_quote refer to uses of the time-out button. " _n
+	"$breaks_description " _n
 	"$treatment_description " _n
 	"$sample_description_nonreg " _n
 	"\end{minipage}" _n
@@ -304,7 +304,10 @@ foreach time in 1 2 dif  {
 		if("`treat'" == "tratio") local treat_str Performance Bonus
 		if("`treat'" == "gratio") local treat_str Gift
 		
-		local p`time'_`treat'_row "`treat_str' &" `format' (`slider_`treat'_`time'_effort') " &" `format' ( `slider_`treat'_`time'_time') " &" `format' ( `slider_`treat'_`time'_opt') "&&" `format' ( `creative_`treat'_`time'_effort') "&" `format' ( `creative_`treat'_`time'_time') "&" `format' ( `creative_`treat'_`time'_opt') " \\ "
+		if("`treat'" == "c") local space \vspace{5pt}
+		if("`treat'" != "c") local space 
+		
+		local p`time'_`treat'_row "`treat_str' &" `format' (`slider_`treat'_`time'_effort') " &" `format' ( `slider_`treat'_`time'_time') " &" `format' ( `slider_`treat'_`time'_opt') "&&" `format' ( `creative_`treat'_`time'_effort') "&" `format' ( `creative_`treat'_`time'_time') "&" `format' ( `creative_`treat'_`time'_opt') " `space' \\ "
 	}
 }
 /*
@@ -387,11 +390,10 @@ file write f
 	"`task_header'" _n
 	"`combined_headers1'" _n
 	"`combined_headers2'" _n
-	"\hline" _n
+	"\midrule" _n
 	"`p2_t_row'" _n
 	"`p2_g_row'" _n
 	"`p2_c_row'" _n
-	" \\" _n
 	" \multicolumn{3}{l}{\textit{Log Difference}} \\" _n
 	"\hspace{10pt} `p2_tratio_row'" _n
 	//" (Tournament - Control) 	& \\" _n
@@ -401,11 +403,11 @@ file write f
 	"\end{tabular}}" _n
 	"\begin{minipage}{1.2\textwidth}" _n
 	"\footnotesize {\it Note:} This table reports raw, unstandardized, average output, time spent working, and output per second of time worked. " _n 
-	"``Average output$close_latex_quote refers to the number of correctly positioned sliders in the simple task and to the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure in the creative task). " _n
-	"``Time worked$close_latex_quote is the total time (180 seconds) less the number of breaks times the length of breaks (20 seconds). " _n
-	"``Output per second of time worked$close_latex_quote is the ratio of those two quantities. " _n
-	"$breaks_description ``Breaks$close_latex_quote refer to uses of the time-out button. " _n
-	"``Log difference$close_latex_quote is the log of the treatment group statistic less the log of the \textit{Control} group statistic. Log differences provide a sense of relative effect sizes. " _n
+	"\textit{Average output} refers to the number of correctly positioned sliders in the simple task and to the creativity score in the creative task (please refer to section $creative_score_section for a description of the scoring procedure in the creative task). " _n
+	"\textit{Time worked} is the total time (180 seconds) less the number of breaks times the length of breaks (20 seconds). " _n
+	"\textit{Output per second of time worked} is the ratio of those two quantities. " _n
+	"$breaks_description " _n
+	"\textit{Log difference} is the log of the treatment group statistic less the log of the \textit{Control} group statistic. Log differences provide a sense of relative effect sizes. " _n
 	"Numbers may not add up due to rounding. " _n
 	"For simplicity, this analysis ignores differences in Period 1 output. " _n
 	"$treatment_description " _n

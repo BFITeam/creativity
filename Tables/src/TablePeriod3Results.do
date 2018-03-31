@@ -42,8 +42,9 @@ esttab using "$mypath\Tables\Output\Appendix\Period3_Results_Automated.tex", // 
 	nonumbers 
 	prehead(
 	"\begin{table}[h]%" 
+	"\captionsetup{justification=centering}"
 	"\setlength\tabcolsep{2pt}"
-	"\caption{Treatment Effects in Period 3}"
+	"\caption{Treatment Effects on Output in Period 3}"
 	
 	"\begin{center}%" 
 	"{\small\renewcommand{\arraystretch}{1}%" 
@@ -62,12 +63,14 @@ esttab using "$mypath\Tables\Output\Appendix\Period3_Results_Automated.tex", // 
 	"\end{tabular}"
 	"\begin{minipage}{\textwidth}"
 	"\footnotesize {\it Note:} This table reports the estimated OLS coefficients in Period 3. " 
-	"The analysis shown in this table follows the set-up laid out in Equation 1, with the exception that we now estimate the equation separately for both tasks in this specification. "
+	"The analysis shown in this table follows the set-up laid out in Equation 1 with the exception that we estimate the equation separately for both tasks. "
+	"The even columns estimate the effect of receiving the performance bonus and not receiving it separately. "
 	"$pooled_trans_description "
 	"The treatment dummies \textit{Gift} and \textit{Performance Bonus} capture the effect of a performance-independent wage gift for all or of a performance-dependent performance bonus (rewarding the top two performers out of four agents) on standardized output. " 
 	"The \textit{Discretionary Transfer} coefficient captures any difference between the \textit{Creative Task with Discretionary Transfer -- Control} group and the main \textit{Control} group. "
 	"The \textit{Discretionary Transfer x Gift} coefficient captures the effect of a performance-independent wage gift for all on the standardized amount transferred to the principal. "
-	"That is, the estimated effect of allowing discretionary transfers and offering a wage gift in the creative task equals the sum of the \textit{Discretionary Transfer x Gift} coefficient and the \textit{Discretionary Transfer} coefficient. \\"
+	"That is, the estimated effect of allowing discretionary transfers and offering a wage gift in the creative task equals the sum of the \textit{Discretionary Transfer x Gift} coefficient and the \textit{Discretionary Transfer} coefficient. "
+	"\textit{Performance Bonus Winner} and \textit{Performance Bonus Loser} capture the effect of receiving the performance bonus in Period 2 or not receiving the performance bonus in Period 2 on output in Period 3. \\"
 	"$sample_description "
 	"$controls_list "
 	"$errors_stars "

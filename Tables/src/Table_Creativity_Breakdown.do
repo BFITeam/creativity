@@ -100,8 +100,9 @@ esttab using "$mypath\Tables\Output\Table_Creativity_Breakdown.tex",
 	replace
 	prehead("\begin{landscape}"
 	"\begin{table}[h]%" 
+	"\captionsetup{justification=centering}"
 	"\setlength\tabcolsep{2pt}"
-	"\caption{Dimensions of Creativity: Treatment Effects on Performance in Period 2}"
+	"\caption{Dimensions of Creativity: Treatment Effects on Output in Period 2}"
 	"\label{tab:CreativityBreakdown}"
 	"\begin{center}%" 
 	"{\small\renewcommand{\arraystretch}{1}%" 
@@ -112,11 +113,9 @@ esttab using "$mypath\Tables\Output\Table_Creativity_Breakdown.tex",
 	" &					& 					&						&					&	\textit{Rate}		&	\textit{Rate}		&	\textit{Answers}		&	\textit{Answers} \\" 
 	" & I & II & III & IV & V & VI & VII & VIII \\")
 	prefoot(
-	"\hline"
-	" `intercept_row' \\"
-	"\hline"
+	"\midrule"
 	" `controls_row' \\"
-	"\hline" ) 
+	"\midrule" ) 
 	postfoot("\hline\hline\noalign{\medskip}"
 	"\end{tabular}}"
 	"\begin{minipage}{\textwidth}"
@@ -126,9 +125,9 @@ esttab using "$mypath\Tables\Output\Table_Creativity_Breakdown.tex",
 	"Please refer to section $creative_score_section for a description of the scoring procedure. "
 	"In Columns II, III, and IV, the dependent variables are the three different standardized subdimensions of the creativity score (validity, flexibility, and originality). "
 	"Columns V and VI display treatment effects on the unstandardized flexibility and originality rate. "
-	"The flexibility (originality) rate equals flexibility (originality) points divided by the number of valid answers. Subjects with zero valid answers are dropped from these columns. "
-	"Column VII reports results for a subjective assessment of idea quality (unstandardized). To create this variable, an evaluator blind to the treatments was instructed to indicate for each idea whether they considered it to be a ``best$close_latex_quote or ``outstanding$close_latex_quote idea. "
-	"Column VIII report results for invalid uses (unstandardized). \\"
+	"The flexibility (originality) rate equals flexibility (originality) points divided by the number of validity points. Subjects with zero valid answers are dropped from these two regressions. "
+	"Column VII reports the results for a subjective assessment of idea quality (unstandardized). To create this variable, an evaluator blind to the treatments was instructed to indicate for each idea whether they considered it to be a ``best$close_latex_quote or ``outstanding$close_latex_quote idea. "
+	"Column VIII reports results for the number of invalid uses (unstandardized). \\"
 	"$sample_description "
 	"$controls_list "
 	"$errors_stars "

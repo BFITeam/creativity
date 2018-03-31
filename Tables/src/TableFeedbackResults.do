@@ -126,13 +126,14 @@ file open f using "$mypath/Tables/Output/Appendix/Feedback_Results_Automated.tex
 #delimit ;
 file write f 
 	"\begin{table}[h]%" _n
+	"\captionsetup{justification=centering}" _n
 	"\setlength\tabcolsep{2pt}" _n
-	"\caption{Period 2 and Period 3 Effects Sizes of the Feedback Treatment}" _n
+	"\caption{Treatment Effects on Period 2 and Period 3 Output for the Feedback Treatment}" _n
 	"\begin{center}%" _n
 	"{\small\renewcommand{\arraystretch}{1}%" _n
 	"\begin{tabular}{lcc}" _n
 	"\hline\hline\noalign{\smallskip}" _n
-	" & \bf Slider Task & \bf Creative Task \\" _n
+	" & \bf Simple Task & \bf Creative Task \\" _n
 	"\hline\noalign{\smallskip}" _n
 	"\noalign{\smallskip}" _n
 	"`p2_beta_line'" _n
